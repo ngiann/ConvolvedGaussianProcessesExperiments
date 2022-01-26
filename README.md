@@ -8,6 +8,7 @@
 
 ![Mrk279_2019](Mrk279_2019/Experiment1/Mrk279_2019_experiment1_bar_plot.png)
 
+### Joint probability for kernel, eddington fraction
 
 | Kernel | Eddignton fraction | posterior probability |
 | --- | --- | --- |
@@ -20,3 +21,19 @@
 | rbf | 10% | 0.12 |
 | rbf | 20% | 0.08 |
 | rbf | 30% | 0.10 |
+
+### Marginal probability for kernel
+
+| Kernel  | posterior probability |
+| --- | --- |
+| matern12 | 0.35 |
+| matern32 | 0.34 |
+| rbf |  0.30 |
+
+### Marginal probability for eddington fraction
+
+| Eddington fraction  | posterior probability |
+| --- | --- |
+| 10% | 0.40 |
+| 20% | 0.26 |
+| 30% | 0.33 |
