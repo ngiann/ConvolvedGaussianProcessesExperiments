@@ -30,7 +30,7 @@ for _ in 1:3
 end
 
 
-for EF in [5, 10, 15, 20, 25, 30]
+for EF in [5, 10, 15, 20, 25, 30.0]
 
     Φ = [PhysicalTransferFunctions(mass = m, eddingtonfraction = EF, wavelengths = lambda) for m in masses]
 
