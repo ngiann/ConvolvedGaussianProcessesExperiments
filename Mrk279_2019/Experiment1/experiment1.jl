@@ -41,7 +41,7 @@ for kernelname in ["matern12", "matern32", "rbf"]
         Φ = [PhysicalTransferFunctions(mass = m, eddingtonfraction = EF, wavelengths = lambda) for m in masses]
 
         # proper run and save results
-        outphys = @showprogress pmap(tfarray->(@suppress performcv(tarray=tobs, yarray=yobs, stdarray=σobs, kernelname=kernelname, tfarray=tfarray, iterations=3500, numberofrestarts=2, ρmax=20.0)), Φ);
+        outphys = @showprogress pmap(tfarray->(@suppress performcv(tarray=tobs, yarray=yobs, stdarray=σobs, kernelname=kernelname, tfarray=tfarray, iterations=3500, numberofrestarts=1, ρmax=20.0)), Φ);
 
         filename = @sprintf("Mrk279_2019_physical_exp1_EF_%d_%s.jld2", Int(EF), kernelname)
 
