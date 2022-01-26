@@ -29,3 +29,11 @@
 | matern12 | 0.35 |
 | matern32 | 0.34 |
 | rbf |  0.30 |
+
+### Marginal probability for eddington fraction
+
+| Eddington fraction  | posterior probability |
+| --- | --- |
+| 10% | 0.40 |
+| 20% | 0.26 |
+| 30% | 0.33 |
