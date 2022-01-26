@@ -9,8 +9,8 @@
 # ~/julia-1.7.1/bin/julia -O3 -64
 #
 
-@everywhere using ConvolvedGaussianProcesses, ProgressMeter, Suppressor, MiscUtil, ADDatasets, TransferFunctions, JLD2
-
+@everywhere using ConvolvedGaussianProcesses, ProgressMeter, Suppressor
+using Printf, MiscUtil, ADDatasets, TransferFunctions, JLD2
 # load data
 lambda, tobs, yobs, σobs = readdataset(source="Mrk279_2019");
 
