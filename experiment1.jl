@@ -32,12 +32,12 @@ end
 run(`rm deleteme.jld2`)
 
 
-for EF in [5, 10, 15, 20, 25, 30.0]
+for EF in [5, 10.0]
 
     Φ = [PhysicalTransferFunctions(mass = m, eddingtonfraction = EF, wavelengths = lambda) for m in masses]
 
     # proper run and save results
-    outphys = @showprogress pmap(tfarray->(@suppress performcv(tarray=tobs, yarray=yobs, stdarray=σobs, kernelname="matern32", tfarray=tfarray, iterations=3000, numberofrestarts=1, ρmax=20.0)), Φ);
+    outphys = @showprogress pmap(tfarray->(@suppress performcv(tarray=tobs, yarray=yobs, stdarray=σobs, kernelname="matern32", tfarray=tfarray, iterations=30, numberofrestarts=1, ρmax=20.0)), Φ);
 
     filename = @sprintf("Mrk279_2019_physical_exp1_EF_%d_matern32.jld2", int(EF))
 
