@@ -42,7 +42,7 @@ for kernelname in ["matern12", "matern32"]
         # proper run and save results
         outphys = @showprogress pmap(tfarray->(@suppress performcv(tarray=tobs, yarray=yobs, stdarray=σobs, kernelname=kernelname, tfarray=tfarray, iterations=30, numberofrestarts=1, ρmax=20.0)), Φ);
 
-        filename = @sprintf("Mrk279_2019_physical_exp1_EF_%d_%s.jld2", int(EF), kernelname)
+        filename = @sprintf("Mrk279_2019_physical_exp1_EF_%d_%s.jld2", Int(EF), kernelname)
 
         JLD2.save(filename, "masses", masses, "eddingtonfraction", EF, "out", outphys, "posterior", getprobabilities(outphys))
 
