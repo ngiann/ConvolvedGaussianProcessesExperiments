@@ -42,3 +42,5 @@
 ### Fitted lightcurves for Matern12, 10%
 
 ![Mrk279_2019_best_fit_mater12,ef10](Mrk279_2019/Experiment1/Mrk279_2019_matern12_ef10_bestfit.svg)
+
+![Mrk279_2019_best_fit_rbf,ef20](Mrk279_2019/Experiment1/Mrk279_2019_rbf_ef20_bestfit.svg)
