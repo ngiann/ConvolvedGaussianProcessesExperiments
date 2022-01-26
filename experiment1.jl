@@ -29,6 +29,8 @@ for _ in 1:3
 
 end
 
+run(`rm deleteme.jld2`)
+
 
 for EF in [5, 10, 15, 20, 25, 30.0]
 
