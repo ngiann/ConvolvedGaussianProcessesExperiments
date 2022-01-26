@@ -11,11 +11,12 @@
 
 @everywhere using ConvolvedGaussianProcesses, ProgressMeter, Suppressor
 using Printf, MiscUtil, ADDatasets, TransferFunctions, JLD2
+
 # load data
 lambda, tobs, yobs, σobs = readdataset(source="Mrk279_2019");
 
 # set up parameter ranges
-masses = logrange(1e5, 1e10, nworkers());
+masses = collect(logrange(1e5, 1e10, nworkers()));
 
 # warmup
 for _ in 1:3
