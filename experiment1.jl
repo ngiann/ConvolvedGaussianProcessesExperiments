@@ -31,7 +31,7 @@ end
 
 run(`rm deleteme.jld2`)
 
-for kernelname in ["matern12", "matern32", "rbf"]
+for kernelname in ["matern12", "matern32"]
 
     for EF in [5.0, 10.0]
 
