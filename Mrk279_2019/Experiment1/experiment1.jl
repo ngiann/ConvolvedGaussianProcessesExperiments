@@ -16,7 +16,7 @@ using Printf, MiscUtil, ADDatasets, TransferFunctions, JLD2
 lambda, tobs, yobs, σobs = readdataset(source="Mrk279_2019");
 
 # set up parameter ranges
-masses = collect(logrange(1e5, 1e10, nworkers()));
+masses = collect(logrange(1e5, 1e10, 64));
 
 # warmup
 for _ in 1:3
