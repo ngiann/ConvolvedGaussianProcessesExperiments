@@ -2,11 +2,11 @@
 
 ## Mrk279_2019
 
-![Mrk279_2019](Mrk279_2019/Experiment1/Mrk279_2019_experiment1_posterior_curves.png)
+![Mrk279_2019_posterior_mass](Mrk279_2019/Experiment1/Mrk279_2019_experiment1_posterior_curves.png)
 
 
 
-![Mrk279_2019](Mrk279_2019/Experiment1/Mrk279_2019_experiment1_bar_plot.png)
+![Mrk279_2019_bar_plot](Mrk279_2019/Experiment1/Mrk279_2019_experiment1_bar_plot.png)
 
 ### Joint probability for kernel, eddington fraction
 
@@ -37,3 +37,8 @@
 | 10% | 0.40 |
 | 20% | 0.26 |
 | 30% | 0.33 |
+
+
+### Fitted lightcurves for Matern12, 10%
+
+![Mrk279_2019_best_fit_mater12,ef10](Mrk279_2019/Experiment1/Mrk279_2019_matern12_ef10_bestfit.svg)
