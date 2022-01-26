@@ -31,16 +31,16 @@ end
 
 run(`rm deleteme.jld2`)
 
-for kernelname in ["matern12", "matern32"]
+for kernelname in ["matern12", "matern32", "rbf"]
 
-    for EF in [5.0, 10.0]
+    for EF in [10.0, 20.0, 30.0]
 
-        colourprint(@sprintf("Running mrk279_2019 with kernel=%s and eddingtonfraction=%f", kernelname, EF),foreground=:red, bold=true)
+        colourprint(@sprintf("Running mrk279_2019 with kernel=%s and eddingtonfraction=%d\n", kernelname, EF),foreground=:red, bold=true)
 
         Φ = [PhysicalTransferFunctions(mass = m, eddingtonfraction = EF, wavelengths = lambda) for m in masses]
 
         # proper run and save results
-        outphys = @showprogress pmap(tfarray->(@suppress performcv(tarray=tobs, yarray=yobs, stdarray=σobs, kernelname=kernelname, tfarray=tfarray, iterations=30, numberofrestarts=1, ρmax=20.0)), Φ);
+        outphys = @showprogress pmap(tfarray->(@suppress performcv(tarray=tobs, yarray=yobs, stdarray=σobs, kernelname=kernelname, tfarray=tfarray, iterations=3500, numberofrestarts=2, ρmax=20.0)), Φ);
 
         filename = @sprintf("Mrk279_2019_physical_exp1_EF_%d_%s.jld2", Int(EF), kernelname)
 
