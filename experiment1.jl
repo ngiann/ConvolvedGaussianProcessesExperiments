@@ -31,18 +31,23 @@ end
 
 run(`rm deleteme.jld2`)
 
+for kernelname in ["matern12", "matern32", "rbf"]
 
-for EF in [5, 10.0]
+    for EF in [5.0, 10.0]
 
-    Φ = [PhysicalTransferFunctions(mass = m, eddingtonfraction = EF, wavelengths = lambda) for m in masses]
+        colourprint(@sprintf("Running mrk279_2019 with kernel=%s and eddingtonfraction=%f", kernelname, EF),foreground=:red, bold=true)
 
-    # proper run and save results
-    outphys = @showprogress pmap(tfarray->(@suppress performcv(tarray=tobs, yarray=yobs, stdarray=σobs, kernelname="matern32", tfarray=tfarray, iterations=30, numberofrestarts=1, ρmax=20.0)), Φ);
+        Φ = [PhysicalTransferFunctions(mass = m, eddingtonfraction = EF, wavelengths = lambda) for m in masses]
 
-    filename = @sprintf("Mrk279_2019_physical_exp1_EF_%d_matern32.jld2", int(EF))
+        # proper run and save results
+        outphys = @showprogress pmap(tfarray->(@suppress performcv(tarray=tobs, yarray=yobs, stdarray=σobs, kernelname=kernelname, tfarray=tfarray, iterations=30, numberofrestarts=1, ρmax=20.0)), Φ);
 
-    JLD2.save(filename, "masses", masses, "eddingtonfraction", EF, "out", outphys, "posterior", getprobabilities(outphys))
+        filename = @sprintf("Mrk279_2019_physical_exp1_EF_%d_%s.jld2", int(EF), kernelname)
 
-    @printf("Saved results in %s\n", filename)
+        JLD2.save(filename, "masses", masses, "eddingtonfraction", EF, "out", outphys, "posterior", getprobabilities(outphys))
+
+        @printf("Saved results in %s\n", filename)
+
+    end
 
 end
