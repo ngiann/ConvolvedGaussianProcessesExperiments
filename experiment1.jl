@@ -23,7 +23,7 @@ for _ in 1:3
     # create candidate transfer functions
     Φ = [PhysicalTransferFunctions(mass = m, eddingtonfraction = 10.0, wavelengths = lambda) for m in masses]
 
-    outphys = @showprogress pmap(tfarray-> (@suppress performcv(tarray=tobs, yarray=yobs, stdarray=σobs, kernelname="matern32", tfarray=tfarray, iterations=10, numberofrestarts=1, ρmax=1.0)), Φ[1:2*nworkers()]);
+    outphys = @showprogress pmap(tfarray-> (@suppress performcv(tarray=tobs, yarray=yobs, stdarray=σobs, kernelname="matern32", tfarray=tfarray, iterations=10, numberofrestarts=1, ρmax=1.0)), Φ[1:nworkers()]);
 
     JLD2.save("deleteme.jld2", "masses", masses, "eddingtonfraction", 10.0, "out", outphys)
 
@@ -42,5 +42,5 @@ for EF in [5, 10, 15, 20, 25, 30]
     JLD2.save(filename, "masses", masses, "eddingtonfraction", EF, "out", outphys, "posterior", getprobabilities(outphys))
 
     @printf("Saved results in %s\n", filename)
-    
+
 end
