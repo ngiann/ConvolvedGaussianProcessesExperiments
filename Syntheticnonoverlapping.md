@@ -6,8 +6,8 @@ The purpose of this numerical experiment is to see whether it is theoretically p
 
 This is a figure of the synthetically generated light curves:
 
-![Non_overlapping_lightcurves](ConvolvedGaussianProcessesExperiments/Synthetics/Experiment3/lightcurves.png)
+![Non_overlapping_lightcurves](Synthetics/Experiment3/lightcurves.png)
 
 This is the inferred posterior mass:
 
-![posterior_mass](ConvolvedGaussianProcessesExperiments/Synthetics/Experiment3/posteriormass.png)
+![posterior_mass](Synthetics/Experiment3/posteriormass.png)
