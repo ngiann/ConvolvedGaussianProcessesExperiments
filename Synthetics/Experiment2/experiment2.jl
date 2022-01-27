@@ -12,7 +12,7 @@
 
 @everywhere using ConvolvedGaussianProcesses, ProgressMeter, Suppressor
 
-using Printf, MiscUtil, ADDatasets, TransferFunctions, JLD2, UnicodePlots
+using Printf, MiscUtil, ADDatasets, TransferFunctions, JLD2, UnicodePlots, PyPlot
 
 
 tobs, yobs, σobs, tfarray = simulatedatafromgp(N=50, Tmax=100, mass=2e8, σ=1.0);
