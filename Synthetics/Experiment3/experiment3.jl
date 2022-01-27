@@ -5,7 +5,7 @@
 # This is a simulation with synthetic data.
 # The purpose of the simulation is to see whether it is possible to recover
 # the mass for a set of light curves that do not overlap.
-# A special script for generating the data has been written.
+# A special script for generating the data has been written called "simulatenonoverlapping.jl".
 #
 # Run on hephaistos
 #
