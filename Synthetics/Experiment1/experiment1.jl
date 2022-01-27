@@ -4,7 +4,7 @@
 #
 # Run on hephaistos
 #
-# ~/julia-1.7.1/bin/julia -O3 -64
+# ~/julia-1.7.1/bin/julia -O3 -p64
 #
 
 @everywhere using ConvolvedGaussianProcesses, ProgressMeter, Suppressor
