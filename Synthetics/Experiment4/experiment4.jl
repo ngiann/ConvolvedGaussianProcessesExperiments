@@ -46,7 +46,7 @@ outparallel = @showprogress pmap(tfarray->(@suppress performcv(tarray=tobs, yarr
 
 prob = getprobabilities(outparallel)
 
-JLD2.save("experiment3.jld2", "out", outparallel, "prob", prob, "lambda", lambda, "masses", masses, "eddingtonfraction", 10.0, "truemass", 2e8)
+JLD2.save("experiment4.jld2", "out", outparallel, "prob", prob, "lambda", lambda, "masses", masses, "eddingtonfraction", 10.0, "truemass", 2e8)
 
 UnicodePlots.barplot(masses, prob)
 
