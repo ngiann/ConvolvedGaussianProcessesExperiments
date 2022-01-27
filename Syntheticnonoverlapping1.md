@@ -11,3 +11,5 @@ This is a figure of the synthetically generated light curves:
 This is the inferred posterior mass:
 
 ![posterior_mass](Synthetics/Experiment3/posteriormass.png)
+
+Could it be that there is a difficulty with optimising the lengthscale?
