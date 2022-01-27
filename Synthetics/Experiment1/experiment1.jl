@@ -29,10 +29,14 @@ for i in 1:2
 
 end
 
+# proper run
+
 outparallel = @showprogress pmap(tfarray->(@suppress performcv(tarray=tobs, yarray=yobs, stdarray=σobs, kernelname="matern32", tfarray=tfarray, iterations=2500, numberofrestarts=1, ρmax=10.0)), T)
+
+# save results
 
 prob = getprobabilities(outparallel)
 
-JLD2.save("experiment1.jld2", "out", outparallel, "prob", prob, "lambda", lambda, "masses", masses, "eddingtonfraction", 10.0, "N", 50, "Tmax", 100, "truemass"=2e8, "σ", 0.2)
+JLD2.save("experiment1.jld2", "out", outparallel, "prob", prob, "lambda", lambda, "masses", masses, "eddingtonfraction", 10.0, "N", 50, "Tmax", 100, "truemass", 2e8, "σ", 0.2)
 
 UnicodePlots.barplot(masses, prob)
