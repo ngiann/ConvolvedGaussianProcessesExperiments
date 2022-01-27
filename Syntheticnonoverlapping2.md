@@ -6,6 +6,7 @@ The purpose of this numerical experiment is to see whether it is theoretically p
 
 This experiment is identical to this [experiment](Syntheticnonoverlapping1.md), but there are more data per lightcurve (50 observations).
 
+Note that altough all conditions remain identical to those of the previous experiment (including the random seed), the lightcurves may look different because of ther order in which the observations are samples. Hence by increasing the number of simulated observations, we  inadvertedly change the order in which the observations are samples.
 
 This is a figure of the synthetically generated light curves:
 
