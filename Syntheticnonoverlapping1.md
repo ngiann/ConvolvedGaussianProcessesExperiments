@@ -1,4 +1,4 @@
-## Synthetic non-overlapping light curves
+## Synthetic non-overlapping light curves, 1
 
 This experiment is coded in this [folder](ConvolvedGaussianProcessesExperiments/Synthetics/Experiment3/).
 
