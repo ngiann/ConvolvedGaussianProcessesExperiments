@@ -44,7 +44,8 @@ JLD2.save("experiment2.jld2", "out", outparallel, "prob", prob, "lambda", lambda
 
 UnicodePlots.barplot(masses, prob)
 
-plot(masses, prob, "o"); xscale(:log)
+figure()
+plot(masses, prob, "o-"); xscale(:log)
 PyPlot.title("synthetic, true mass is 2e8")
-savefig("posteriormass.svg")
-savefig("posteriormass.png")
+PyPlot.savefig("posteriormass.svg")
+PyPlot.savefig("posteriormass.png")
