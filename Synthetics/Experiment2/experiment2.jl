@@ -43,3 +43,8 @@ prob = getprobabilities(outparallel)
 JLD2.save("experiment2.jld2", "out", outparallel, "prob", prob, "lambda", lambda, "masses", masses, "eddingtonfraction", 10.0, "N", 50, "Tmax", 100, "truemass", 2e8, "σ", 0.2)
 
 UnicodePlots.barplot(masses, prob)
+
+plot(masses, prob, "o"); xscale(:log)
+title("synthetic, true mass is 2e8")
+savefig("posteriormass.svg")
+savefig("posteriormass.png")
