@@ -9,7 +9,7 @@
 
 @everywhere using ConvolvedGaussianProcesses, ProgressMeter, Suppressor
 
-using Printf, MiscUtil, ADDatasets, TransferFunctions, JLD2
+using Printf, MiscUtil, ADDatasets, TransferFunctions, JLD2, UnicodePlots
 
 
 tobs, yobs, σobs, tfarray = simulatedatafromgp(N=50, Tmax=100, mass=2e8, σ=0.2);
@@ -34,3 +34,5 @@ outparallel = @showprogress pmap(tfarray->(@suppress performcv(tarray=tobs, yarr
 prob = getprobabilities(outparallel)
 
 JLD2.save("experiment1.jld2", "out", outparallel, "prob", prob, "lambda", lambda, "masses", masses, "eddingtonfraction", 10.0, "N", 50, "Tmax", 100, "truemass"=2e8, "σ", 0.2)
+
+UnicodePlots.barplot(masses, prob)
