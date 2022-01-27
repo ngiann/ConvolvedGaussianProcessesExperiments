@@ -1,6 +1,6 @@
 ## Synthetic non-overlapping light curves, 2
 
-This experiment is coded in this [folder](ConvolvedGaussianProcessesExperiments/Synthetics/Experiment4/).
+This experiment is coded in this [folder](Synthetics/Experiment4/).
 
 The purpose of this numerical experiment is to see whether it is theoretically possible to recover the mass parameter for a set of lightcurves that do not overlap in time.
 
