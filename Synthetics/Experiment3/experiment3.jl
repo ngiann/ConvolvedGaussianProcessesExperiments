@@ -18,13 +18,13 @@ using Printf, MiscUtil, ADDatasets, TransferFunctions, JLD2, UnicodePlots, PyPlo
 
 include("simulatenonoverlapping.jl")
 
-tobs, yobs, σobs, tfarray, lambda = simulatenonoverlapping(N=50, mass=2e8, σ=1.0,seed=2);
+tobs, yobs, σobs, tfarray, lambda = simulatenonoverlapping(N=25, mass=2e8, σ=1.0,seed=2);
 
 PyPlot.savefig("lightcurves.svg")
 PyPlot.savefig("lightcurves.png")
 
 
-masses = collect(logrange(1e5, 1e10, 64));
+masses = collect(logrange(1e5, 1e10, 128));
 
 T = [PhysicalTransferFunctions(mass = m, eddingtonfraction = 10.0, wavelengths = lambda) for m in masses]
 
@@ -45,7 +45,7 @@ outparallel = @showprogress pmap(tfarray->(@suppress performcv(tarray=tobs, yarr
 
 prob = getprobabilities(outparallel)
 
-JLD2.save("experiment3.jld2", "out", outparallel, "prob", prob, "lambda", lambda, "masses", masses, "eddingtonfraction", 10.0, "N", 50, "Tmax", 100, "truemass", 2e8, "σ", 0.2)
+JLD2.save("experiment3.jld2", "out", outparallel, "prob", prob, "lambda", lambda, "masses", masses, "eddingtonfraction", 10.0, "truemass", 2e8)
 
 UnicodePlots.barplot(masses, prob)
 
