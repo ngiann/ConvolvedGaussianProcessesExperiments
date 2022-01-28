@@ -69,11 +69,11 @@ tfarray = PhysicalTransferFunctions(mass=bestmass, eddingtonfraction=10.0, wavel
 
 fmin, pred = convolvedgp(tarray=tobs, yarray=yobs, stdarray=σobs, kernelname="matern32", iterations=10000, ρmax=10.0,  tfarray = tfarray);
 
-xtest = collect(LinRange(0.0, 145.0, 1000))
+xtest = collect(LinRange(0.0, 360.0, 2000))
 
 μpred, σpred = pred(xtest)
 
-colours = ["b", "orange", "g"]
+colours = ["b", "orange", "g", "m"]
 
 for i in 1:length(tobs)
     plot(tobs[i], yobs[i], "o", color=colours[i], markeredgecolor="k")
