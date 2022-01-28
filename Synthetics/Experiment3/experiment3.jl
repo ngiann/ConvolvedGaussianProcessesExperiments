@@ -55,3 +55,37 @@ plot(2e8*ones(5), collect(LinRange(minimum(prob),maximum(prob), 5)), "r--")
 PyPlot.title("synthetic, non-overlapping time series, true mass is 2e8 at dashed line")
 PyPlot.savefig("posteriormass.svg")
 PyPlot.savefig("posteriormass.png")
+
+
+# plot best fit
+
+figure()
+
+bestmass = masses[argmax(prob)]
+
+tfarray = PhysicalTransferFunctions(mass=bestmass, eddingtonfraction=10.0, wavelengths=lambda);
+
+fmin, pred = convolvedgp(tarray=tobs, yarray=yobs, stdarray=σobs, kernelname="matern32", iterations=10000, ρmax=10.0,  tfarray = tfarray);
+
+xtest = collect(LinRange(0.0, 145.0, 1000))
+
+μpred, σpred = pred(xtest)
+
+colours = ["b", "orange", "g"]
+
+for i in 1:length(tobs)
+    plot(tobs[i], yobs[i], "o", color=colours[i], markeredgecolor="k"))
+end
+
+for i in 1:length(tobs)
+    fill_between(xtest, μpred[i] .+ σpred[i], μpred[i] .- σpred[i], color=colours[i],  alpha=0.1)
+end
+
+for i in 1:length(tobs)
+    plot(xtest, μpred[i], color=colours[i])
+end
+
+PyPlot.title(@sprintf("best fit for mass=%e", bestmass))
+
+PyPlot.savefig("bestfit.svg")
+PyPlot.savefig("bestfit.png")
