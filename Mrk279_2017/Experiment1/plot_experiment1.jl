@@ -4,17 +4,17 @@ function plot_experiment1()
 
     # Filenames
 
-    file_10_matern12 = "Mrk279_2019/Experiment1/Mrk279_2019_physical_exp1_EF_10_matern12.jld2"
-    file_20_matern12 = "Mrk279_2019/Experiment1/Mrk279_2019_physical_exp1_EF_20_matern12.jld2"
-    file_30_matern12 = "Mrk279_2019/Experiment1/Mrk279_2019_physical_exp1_EF_30_matern12.jld2"
+    file_10_matern12 = "Mrk279_2017/Experiment1/Mrk279_2017_physical_exp1_EF_10_matern12.jld2"
+    file_20_matern12 = "Mrk279_2017/Experiment1/Mrk279_2017_physical_exp1_EF_20_matern12.jld2"
+    file_30_matern12 = "Mrk279_2017/Experiment1/Mrk279_2017_physical_exp1_EF_30_matern12.jld2"
 
-    file_10_matern32 = "Mrk279_2019/Experiment1/Mrk279_2019_physical_exp1_EF_10_matern32.jld2"
-    file_20_matern32 = "Mrk279_2019/Experiment1/Mrk279_2019_physical_exp1_EF_20_matern32.jld2"
-    file_30_matern32 = "Mrk279_2019/Experiment1/Mrk279_2019_physical_exp1_EF_30_matern32.jld2"
+    file_10_matern32 = "Mrk279_2017/Experiment1/Mrk279_2017_physical_exp1_EF_10_matern32.jld2"
+    file_20_matern32 = "Mrk279_2017/Experiment1/Mrk279_2017_physical_exp1_EF_20_matern32.jld2"
+    file_30_matern32 = "Mrk279_2017/Experiment1/Mrk279_2017_physical_exp1_EF_30_matern32.jld2"
 
-    file_10_rbf = "Mrk279_2019/Experiment1/Mrk279_2019_physical_exp1_EF_10_rbf.jld2"
-    file_20_rbf = "Mrk279_2019/Experiment1/Mrk279_2019_physical_exp1_EF_20_rbf.jld2"
-    file_30_rbf = "Mrk279_2019/Experiment1/Mrk279_2019_physical_exp1_EF_30_rbf.jld2"
+    file_10_rbf = "Mrk279_2017/Experiment1/Mrk279_2017_physical_exp1_EF_10_rbf.jld2"
+    file_20_rbf = "Mrk279_2017/Experiment1/Mrk279_2017_physical_exp1_EF_20_rbf.jld2"
+    file_30_rbf = "Mrk279_2017/Experiment1/Mrk279_2017_physical_exp1_EF_30_rbf.jld2"
 
     # Load saved results
 
@@ -113,7 +113,7 @@ function plot_experiment1()
     bestmass = masses[bestmass_index]
     @printf("best mass for matern12, 10%% is %e\n", bestmass)
 
-    lambda, tobs, yobs, σobs = readdataset(; source = "Mrk279_2019");
+    lambda, tobs, yobs, σobs = readdataset(; source = "Mrk279_2017");
 
     tfarray = PhysicalTransferFunctions(mass = bestmass, eddingtonfraction = 10.0, wavelengths = lambda)
 
@@ -124,7 +124,7 @@ function plot_experiment1()
     μ, σ = pred(xtest)
 
     figure()
-    title("Mrk279_2019, matern12, ef=10%")
+    title("Mrk279_2017, matern12, ef=10%")
     clr = ["m", "b", "g", "r"]
     for i in 1:4
         plot(tobs[i], yobs[i], clr[i]*"o", markeredgecolor="k")
@@ -145,7 +145,7 @@ function plot_experiment1()
     bestmass = masses[bestmass_index]
     @printf("best mass for rbf, 20%% is %e\n", bestmass)
 
-    lambda, tobs, yobs, σobs = readdataset(; source = "Mrk279_2019");
+    lambda, tobs, yobs, σobs = readdataset(; source = "Mrk279_2017");
 
     tfarray = PhysicalTransferFunctions(mass = bestmass, eddingtonfraction = 20.0, wavelengths = lambda)
 
@@ -156,7 +156,7 @@ function plot_experiment1()
     μ, Σ = pred(xtest)
 
     figure()
-    title("Mrk279_2019, rbf, ef=20%")
+    title("Mrk279_2017, rbf, ef=20%")
     clr = ["m", "b", "g", "r"]
     for i in 1:4
         plot(tobs[i], yobs[i], clr[i]*"o", markeredgecolor="k")

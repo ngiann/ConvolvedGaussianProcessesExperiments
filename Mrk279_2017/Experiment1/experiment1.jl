@@ -1,6 +1,6 @@
 # 26 Jan 2022
 #
-# Commands executed for getting results for MRK_279_2019
+# Commands executed for getting results for MRK_279_2017
 # using updated physical transfer functions that take eddingtonfraction
 # instead of accretion rate
 #
@@ -13,7 +13,7 @@
 using Printf, MiscUtil, ADDatasets, TransferFunctions, JLD2
 
 # load data
-lambda, tobs, yobs, σobs = readdataset(source="Mrk279_2019");
+lambda, tobs, yobs, σobs = readdataset(source="Mrk279_2017");
 
 # set up parameter ranges
 masses = collect(logrange(1e5, 1e10, 64));
@@ -36,14 +36,14 @@ for kernelname in ["matern12", "matern32", "rbf"]
 
     for EF in [10.0, 20.0, 30.0]
 
-        colourprint(@sprintf("Running mrk279_2019 with kernel=%s and eddingtonfraction=%d\n", kernelname, EF),foreground=:red, bold=true)
+        colourprint(@sprintf("Running mrk279_2017 with kernel=%s and eddingtonfraction=%d\n", kernelname, EF),foreground=:red, bold=true)
 
         Φ = [PhysicalTransferFunctions(mass = m, eddingtonfraction = EF, wavelengths = lambda) for m in masses]
 
         # proper run and save results
         outphys = @showprogress pmap(tfarray->(@suppress performcv(tarray=tobs, yarray=yobs, stdarray=σobs, kernelname=kernelname, tfarray=tfarray, iterations=3500, numberofrestarts=1, ρmax=20.0)), Φ);
 
-        filename = @sprintf("Mrk279_2019_physical_exp1_EF_%d_%s.jld2", Int(EF), kernelname)
+        filename = @sprintf("Mrk279_2017_physical_exp1_EF_%d_%s.jld2", Int(EF), kernelname)
 
         JLD2.save(filename, "masses", masses, "eddingtonfraction", EF, "out", outphys, "posterior", getprobabilities(outphys))
 
