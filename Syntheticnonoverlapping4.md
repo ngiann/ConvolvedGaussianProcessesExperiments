@@ -13,3 +13,7 @@ This is a figure of the synthetically generated light curves:
 This is the inferred posterior mass:
 
 ![posterior_mass](Synthetics/Experiment7/posteriormass.png)
+
+This is the fit for the most likely mass:
+
+![posterior_mass](Synthetics/Experiment7/bestfit.png)
