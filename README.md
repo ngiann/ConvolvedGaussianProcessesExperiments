@@ -2,7 +2,7 @@
 
 ## Results
 - Real data
-  - [Mrk279_2019](Mrk279_2019.md)
+  - [Mrk279_2017](Mrk279_2017.md)
 - Synthetic
   - [Synthetic, 1](Synthetic1.md)
 - Synthetic, non-overlapping in time light curves
