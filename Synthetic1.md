@@ -14,4 +14,4 @@ This is the inferred posterior mass:
 
 This is the fit for the most likely mass:
 
-![posterior_mass](Synthetics/Experiment2/bestfit.png)
+![posterior_mass](Synthetics/Experiment2/bestfit.svg)
