@@ -2,7 +2,7 @@
 
 This experiment is coded in this [folder](Synthetics/Experiment2/).
 
-The purpose of this numerical experiment is to see verify that our code can correctly recover the mass parameter.
+The purpose of this numerical experiment is to verify that our code can correctly recover the mass parameter.
 
 This is a figure of the synthetically generated light curves:
 
