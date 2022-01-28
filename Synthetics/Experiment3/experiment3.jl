@@ -74,7 +74,7 @@ xtest = collect(LinRange(0.0, 145.0, 1000))
 colours = ["b", "orange", "g"]
 
 for i in 1:length(tobs)
-    plot(tobs[i], yobs[i], "o", color=colours[i], markeredgecolor="k"))
+    plot(tobs[i], yobs[i], "o", color=colours[i], markeredgecolor="k")
 end
 
 for i in 1:length(tobs)
