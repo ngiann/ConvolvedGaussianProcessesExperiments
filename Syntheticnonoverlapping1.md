@@ -12,4 +12,8 @@ This is the inferred posterior mass:
 
 ![posterior_mass](Synthetics/Experiment3/posteriormass.png)
 
+This is the fit for the most likely mass:
+
+![posterior_mass](Synthetics/Experiment3/bestfit.png)
+
 Could it be that there is a difficulty with optimising the lengthscale?
