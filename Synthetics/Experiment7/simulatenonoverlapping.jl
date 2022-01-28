@@ -30,7 +30,7 @@ function simulatenonoverlapping(; seed = 1, mass = 1e6, eddingtonfraction = 10.0
             σ*0.20*ones(Nobs[4])]
 
 
-    tobs = [rand(Uniform(0.0, 50.0), N), rand(Uniform(100.0, 150.0), N), rand(Uniform(200, 250.0), N), rand(Uniform(300, 350.0), N)]
+    tobs = [rand(rg, Uniform(0.0, 50.0), N), rand(rg, Uniform(100.0, 150.0), N), rand(rg, Uniform(200, 250.0), N), rand(Uniform(300, 350.0), N)]
 
     #---------------------------------------------------------------------
     # Define Gaussian process to draw noisy targets

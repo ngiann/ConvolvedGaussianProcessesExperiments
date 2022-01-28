@@ -55,7 +55,7 @@ UnicodePlots.barplot(masses, prob)
 
 figure()
 plot(masses, prob, "o-"); xscale(:log)
-plot(2e8*ones(5), collect(LinRange(0.00411,0.0125, 5)), "r--")
+plot(2e8*ones(5), collect(LinRange(minimum(prob),maximum(prob), 5)), "r--")
 PyPlot.title("synthetic, non-overlapping time series, true mass is 2e8 at dashed line")
 PyPlot.savefig("posteriormass.svg")
 PyPlot.savefig("posteriormass.png")
