@@ -153,7 +153,7 @@ function plot_experiment1()
 
     xtest = 57866:0.1:57957.0
 
-    μ, Σ = pred(xtest)
+    μ, σ = pred(xtest)
 
     figure()
     title("Mrk279_2017, rbf, ef=20%")

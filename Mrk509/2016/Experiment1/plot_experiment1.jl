@@ -106,12 +106,12 @@ function plot_experiment1()
     # Plot best fit for each combination of kernel and eddington fraction
 
     ##################
-    # Matern 12, 10% #
+    # Matern 32, 10% #
     ##################
 
-    bestmass_index = argmax(data_10_matern12["posterior"])
+    bestmass_index = argmax(data_10_matern32["posterior"])
     bestmass = masses[bestmass_index]
-    @printf("best mass for matern12, 10%% is %e\n", bestmass)
+    @printf("best mass for matern32, 10%% is %e\n", bestmass)
 
     lambda, tobs, yobs, σobs = readdataset(; source = "Mrk509_2016");
 
@@ -119,12 +119,12 @@ function plot_experiment1()
 
     _, pred = convolvedgp(tarray=tobs, yarray=yobs, stdarray=σobs, kernelname="matern32", tfarray=tfarray, iterations=3000, numberofrestarts = 1, ρmax=10.0);
 
-    xtest = 57866:0.1:57957.0
+    xtest = 57525:0.5:57700
 
     μ, σ = pred(xtest)
 
     figure()
-    title("Mrk509_2016, matern12, ef=10%")
+    title("Mrk509_2016, matern32, ef=10%")
     clr = ["m", "b", "g", "r"]
     for i in 1:4
         plot(tobs[i], yobs[i], clr[i]*"o", markeredgecolor="k")
@@ -153,7 +153,7 @@ function plot_experiment1()
 
     xtest = 57866:0.1:57957.0
 
-    μ, Σ = pred(xtest)
+    μ, σ = pred(xtest)
 
     figure()
     title("Mrk509_2016, rbf, ef=20%")
