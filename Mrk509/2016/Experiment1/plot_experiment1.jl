@@ -151,7 +151,7 @@ function plot_experiment1()
 
     _, pred = convolvedgp(tarray=tobs, yarray=yobs, stdarray=σobs, kernelname="rbf", tfarray=tfarray, iterations=3000, numberofrestarts = 1, ρmax=10.0);
 
-    xtest = 57866:0.1:57957.0
+    xtest = 57525:0.5:57700
 
     μ, σ = pred(xtest)
 
