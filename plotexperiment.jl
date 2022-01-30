@@ -59,6 +59,12 @@ function plotexperiment(; filenames = filenames,
     # Plot best fit for each combination of kernel and eddington fraction
     #----------------------------------------------------------------------------
 
+    firstfigure = true
+
+    # create an object type axis before we enter the loop below so that we can
+    # set this object inside the loop
+    fig = figure(); ax = axis(); close(fig)
+
     for d in data
 
         local kernelname, ef = d["kernelname"], d["eddingtonfraction"]
@@ -82,9 +88,8 @@ function plotexperiment(; filenames = filenames,
 
         μ, σ = pred(xtest)
 
+
         figure()
-
-
 
         title(namestring)
 
@@ -96,12 +101,22 @@ function plotexperiment(; filenames = filenames,
 
             fill_between(xtest, μ[i] .+ σ[i], μ[i] .- σ[i], color=clr[i],  alpha=0.2)
 
-            plot(xtest, μ[i], "k-", linewidth=1, label = @sprintf("%d", lambda[i]))
+            plot(xtest, μ[i], "k-", linewidth=2)
+
+            # plot(xtest, μ[i], "--", linewidth=1, color = clr[i], label = @sprintf("%d", lambda[i]))
+
+        end
+
+        if firstfigure
+            firstfigure = false
+            ax = axis()
+        else
+            axis(ax)
         end
 
         savefig(namestring * "_bestfit.svg")
 
-        legend()
+        # legend()
 
     end
 
