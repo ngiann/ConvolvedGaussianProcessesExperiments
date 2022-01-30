@@ -31,12 +31,12 @@ function plotexperiment(; filenames = filenames,
     # calculate posterior model probability #
     #---------------------------------------#
 
-    p = zeros(length(data))
-
 
     numberoffolds = length(data[1]["out"][1])
 
-    for i in 1:length(masses, j in 1:numberoffolds
+    p = zeros(length(data))
+
+    for i in 1:length(masses), j in 1:numberoffolds
 
         aux = vec([d["out"][i][j] for d in data])
 
