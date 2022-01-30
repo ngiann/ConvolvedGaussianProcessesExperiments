@@ -9,6 +9,9 @@ function plotexperiment(; filenames = filenames,
 
     data = map(load, filenames)
 
+    masses = data[1]["masses"]
+
+    # TODO : make sure all data contain the same masses
 
     #--------------------------------------------------------#
     # Plot posterior probabilities of each model             #
@@ -19,7 +22,7 @@ function plotexperiment(; filenames = filenames,
 
     for (d, f) in zip(data, filenames)
 
-        plot(d["masses"], d["posterior"], "-", label = f); xscale("log")
+        plot(masses, d["posterior"], "-", label = f); xscale("log")
 
     end
 
@@ -56,9 +59,12 @@ function plotexperiment(; filenames = filenames,
     # Plot best fit for each combination of kernel and eddington fraction
     #----------------------------------------------------------------------------
 
-    for (d, c) in zip(data, combinations)
+    for d in data
 
-        local kernelname, ef = c[1], c[2]
+        local kernelname, ef = d["kernelname"], d["eddingtonfraction"]
+
+        namestring = @sprintf("%s_%s_%f", d["objectname"], kernelname, ef)
+
 
         # find index of most likely mass
         bestmass_index = argmax(d["posterior"])
@@ -66,7 +72,7 @@ function plotexperiment(; filenames = filenames,
         # get most likely mass, i.e. mode of posterior mass distribution
         bestmass = d["masses"][bestmass_index]
 
-        @printf("best mass for %s is %e\n", c, bestmass)
+        @printf("best mass for %s is %e\n", namestring, bestmass)
 
         tfarray = PhysicalTransferFunctions(mass = bestmass, eddingtonfraction = ef, wavelengths = lambda)
 
@@ -78,9 +84,9 @@ function plotexperiment(; filenames = filenames,
 
         figure()
 
-        titlestr = @sprintf("%s_%s_%f", d["objectname"], kernelname, ef)
 
-        title(titlestr)
+
+        title(namestring)
 
         clr = ["b", "orange", "g", "r", "c", "y", "k", "m"]
 
@@ -93,7 +99,7 @@ function plotexperiment(; filenames = filenames,
             plot(xtest, μ[i], "k-", linewidth=1, label = @sprintf("%d", lambda[i]))
         end
 
-        savefig(titlestr * "_bestfit.svg")
+        savefig(namestring * "_bestfit.svg")
 
         legend()
 
