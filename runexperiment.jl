@@ -29,7 +29,7 @@ function runexperiment(; lambda = lambda, tobs = tobs, yobs = yobs, σobs = σob
 
         out = @showprogress pmap(tfarray-> (@suppress performcv(tarray=tobs, yarray=yobs, stdarray=σobs, kernelname=kernelname, tfarray=tfarray, iterations=10, numberofrestarts=1, ρmax=1.0)), Φ[1:nworkers()])
 
-        JLD2.save("deleteme.jld2", "masses", masses, "eddingtonfraction", 10.0, "out", out)
+        JLD2.save("deleteme.jld2", "masses", masses, "eddingtonfraction", 10.0, "out", out, "kernelname", kernelname)
 
     end
 
@@ -50,7 +50,7 @@ function runexperiment(; lambda = lambda, tobs = tobs, yobs = yobs, σobs = σob
 
     filename = @sprintf("%s_EF_%d_%s.jld2", objectname, Int(ef), kernelname)
 
-    JLD2.save(filename, "objectname", objectname, "masses", masses, "eddingtonfraction", ef, "out", out, "posterior", getprobabilities(out))
+    JLD2.save(filename, "objectname", objectname, "masses", masses, "eddingtonfraction", ef, "out", out, "posterior", getprobabilities(out), "kernelname", kernelname)
 
     @printf("Saved results in %s\n", filename)
 
