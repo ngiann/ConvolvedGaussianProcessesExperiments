@@ -11,9 +11,9 @@ function plotexperiment(objectname)
 
     EFs = map(x -> @sprintf("%d", x), [10, 20, 30])
 
-    combinations = [kn * "_" * ef for kn in kernelnames, ef in EFs]
+    combinations = ["EF_" * ef * "_" * kn for kn in kernelnames, ef in EFs]
 
-    filenames = map(x -> @sprintf("%s_EF_%s.jld2", objectname, x), combinations)
+    filenames = map(x -> @sprintf("%s_%s.jld2", objectname, x), combinations)
 
 
     #---------------------------------------#
