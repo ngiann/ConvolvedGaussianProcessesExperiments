@@ -30,7 +30,7 @@ function plotexperiment(objectname)
 
     figure(1); cla()
 
-    for (d, c) in (data, combinations)
+    for (d, c) in zip(data, combinations)
 
         plot(d["masses"], d["posterior"], "r-", label = c); xscale("log")
 
