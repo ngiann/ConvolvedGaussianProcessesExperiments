@@ -1,3 +1,12 @@
+#
+# To run multiple kernels and eddingtonfractions for the same dataset, use sth linke:
+#
+# K = ["matern12", "matern32", "rbf"]
+# E = [10.0, 20.0, 30.0]
+# comb = vec(collect(Base.Iterators.product(K,E)))
+# map(X->runexperiment(lambda = lambda, tobs = tobs, yobs = yobs, σobs = σobs, objectname = "Mrk279_2017", kernelname =  X[1], ef = X[2]), comb);
+#
+
 @everywhere using ConvolvedGaussianProcesses, ProgressMeter, Suppressor
 using Printf, MiscUtil, ADDatasets, TransferFunctions, JLD2
 
@@ -22,7 +31,7 @@ function runexperiment(; lambda = lambda, tobs = tobs, yobs = yobs, σobs = σob
     # warmup run #
     ##############
 
-    for _ in 1:3
+    for _ in 1:2
 
         # create candidate transfer functions
         Φ = [PhysicalTransferFunctions(mass = m, eddingtonfraction = ef, wavelengths = lambda) for m in masses]
