@@ -1,7 +1,18 @@
 using MiscUtil, PyPlot, JLD2, Statistics, StatsFuns, ConvolvedGaussianProcesses, ADDatasets, TransferFunctions, Printf, LinearAlgebra
 
-function plotexperiment(; filenames = filenames,
-                          lambda = lambda, tobs = tobs, yobs = yobs, σobs = σobs)
+function plotexperiment(; kernelnames = ["matern12", "matern32", "rbf"], EFs = [10.0, 20.0, 30.0],
+                          lambda = lambda, tobs = tobs, yobs = yobs, σobs = σobs, objectname = objectname)
+
+    #---------------------------------------#
+    #      Create names and filenames       #
+    #---------------------------------------#
+
+    combinations = [(kn, ef) for kn in kernelnames, ef in EFs]
+
+    stringcombinations = ["EF_" * @sprintf("%d", ef) * "_" * kn for kn in kernelnames, ef in EFs]
+
+    filenames = map(x -> @sprintf("%s_%s.jld2", objectname, x), stringcombinations)
+
 
     #---------------------------------------#
     #          Load saved results           #
@@ -17,9 +28,9 @@ function plotexperiment(; filenames = filenames,
 
     figure(1); cla()
 
-    for (d, f) in zip(data, filenames)
+    for (d, c) in zip(data, stringcombinations)
 
-        plot(d["masses"], d["posterior"], "-", label = f); xscale("log")
+        plot(d["masses"], d["posterior"], "-", label = c); xscale("log")
 
     end
 
@@ -34,14 +45,14 @@ function plotexperiment(; filenames = filenames,
     p = zeros(length(data))
 
 
-    numberoffolds = length(data[1]["out"][1])
+    for i in 1:length(masses)
+        for j in 1:length(data[1]["out"][1])
 
-    for i in 1:length(masses, j in 1:numberoffolds
+            aux = vec([d["out"][i][j] for d in data])
 
-        aux = vec([d["out"][i][j] for d in data])
+            p += exp.(aux .- logsumexp(aux))
 
-        p += exp.(aux .- logsumexp(aux))
-
+        end
     end
 
     p = p / (length(masses) * length(data[1]["out"][1]))
@@ -62,7 +73,7 @@ function plotexperiment(; filenames = filenames,
         bestmass_index = argmax(d["posterior"])
 
         # get most likely mass, i.e. mode of posterior mass distribution
-        bestmass = d["masses"][bestmass_index]
+        bestmass = masses[bestmass_index]
 
         @printf("best mass for %s is %e\n", c, bestmass)
 
@@ -76,7 +87,7 @@ function plotexperiment(; filenames = filenames,
 
         figure()
 
-        titlestr = @sprintf("%s_%s_%f", d["objectname"], kernelname, ef)
+        titlestr = @sprintf("%s_%s_%f", objectname, kernelname, ef)
 
         title(titlestr)
 
@@ -86,7 +97,7 @@ function plotexperiment(; filenames = filenames,
 
             plot(tobs[i], yobs[i], "o", color = clr[i], markeredgecolor="k")
 
-            fill_between(xtest, μ[i] .+ σ[i], μ[i] .- σ[i], color=clr[i],  alpha=0.2)
+            fill_between(xtest, μ[i] .+ 2*σ[i], μ[i] .- 2*σ[i], color=clr[i],  alpha=0.2)
 
             plot(xtest, μ[i], "k-", linewidth=1, label = @sprintf("%d", lambda[i]))
         end
