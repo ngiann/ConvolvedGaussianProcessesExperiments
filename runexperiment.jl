@@ -2,7 +2,7 @@
 using Printf, MiscUtil, ADDatasets, TransferFunctions, JLD2
 
 
-function runexperiment(; lambda = lambda, tobs = tobs, yobs = yobs, σobs = σobs, objectname = objectname)
+function runexperiment(; lambda = lambda, tobs = tobs, yobs = yobs, σobs = σobs, objectname = objectname, kernelname = kernelname, ef = ef)
 
 
     colourprint(@sprintf("Started working on object |%s|\n", objectname))
@@ -22,9 +22,9 @@ function runexperiment(; lambda = lambda, tobs = tobs, yobs = yobs, σobs = σob
     for _ in 1:3
 
         # create candidate transfer functions
-        Φ = [PhysicalTransferFunctions(mass = m, eddingtonfraction = 10.0, wavelengths = lambda) for m in masses]
+        Φ = [PhysicalTransferFunctions(mass = m, eddingtonfraction = ef, wavelengths = lambda) for m in masses]
 
-        out = @showprogress pmap(tfarray-> (@suppress performcv(tarray=tobs, yarray=yobs, stdarray=σobs, kernelname="matern32", tfarray=tfarray, iterations=10, numberofrestarts=1, ρmax=1.0)), Φ[1:nworkers()])
+        out = @showprogress pmap(tfarray-> (@suppress performcv(tarray=tobs, yarray=yobs, stdarray=σobs, kernelname=kernelname, tfarray=tfarray, iterations=10, numberofrestarts=1, ρmax=1.0)), Φ[1:nworkers()])
 
         JLD2.save("deleteme.jld2", "masses", masses, "eddingtonfraction", 10.0, "out", out)
 
@@ -37,26 +37,20 @@ function runexperiment(; lambda = lambda, tobs = tobs, yobs = yobs, σobs = σob
     # proper run #
     ##############
 
-    for kernelname in ["matern12", "matern32", "rbf"]
 
-        for EF in [10.0, 20.0, 30.0]
+    colourprint(@sprintf("Running %s with kernel=%s and eddingtonfraction=%d\n", objectname, kernelname, ef), foreground=:red, bold=true)
 
-            colourprint(@sprintf("Running %s with kernel=%s and eddingtonfraction=%d\n", objectname, kernelname, EF), foreground=:red, bold=true)
+    # create candidate transfer functions
+    Φ = [PhysicalTransferFunctions(mass = m, eddingtonfraction = ef, wavelengths = lambda) for m in masses]
 
-            # create candidate transfer functions
-            Φ = [PhysicalTransferFunctions(mass = m, eddingtonfraction = EF, wavelengths = lambda) for m in masses]
+    out = @showprogress pmap(tfarray->(@suppress performcv(tarray=tobs, yarray=yobs, stdarray=σobs, kernelname=kernelname, tfarray=tfarray, iterations=3500, numberofrestarts=1, ρmax=20.0)), Φ)
 
-            out = @showprogress pmap(tfarray->(@suppress performcv(tarray=tobs, yarray=yobs, stdarray=σobs, kernelname=kernelname, tfarray=tfarray, iterations=3500, numberofrestarts=1, ρmax=20.0)), Φ)
+    filename = @sprintf("%s_EF_%d_%s.jld2", objectname, Int(ef), kernelname)
 
-            filename = @sprintf("%s_EF_%d_%s.jld2", objectname, Int(EF), kernelname)
+    JLD2.save(filename, "objectname", objectname, "masses", masses, "eddingtonfraction", ef, "out", out, "posterior", getprobabilities(out))
 
-            JLD2.save(filename, "objectname", objectname, "masses", masses, "eddingtonfraction", EF, "out", out, "posterior", getprobabilities(out))
+    @printf("Saved results in %s\n", filename)
 
-            @printf("Saved results in %s\n", filename)
-
-        end
-
-    end
 
 
     colourprint(@sprintf("Finished working on object |%s|\n", objectname))
