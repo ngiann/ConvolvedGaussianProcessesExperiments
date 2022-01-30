@@ -5,8 +5,11 @@ using Printf, MiscUtil, ADDatasets, TransferFunctions, JLD2
 function runexperiment(; lambda = lambda, tobs = tobs, yobs = yobs, σobs = σobs, objectname = objectname, kernelname = kernelname, ef = ef)
 
 
-    colourprint(@sprintf("Started working on object |%s|\n", objectname))
+    colourprint(@sprintf("Started working on object |%s|\n", objectname), bold = true)
 
+    colourprint(@sprintf("kernelname is |%s|\n", kernelname))
+
+    colourprint(@sprintf("ef is |%f|\n", ef))
 
     ###########################
     # set up parameter ranges #
