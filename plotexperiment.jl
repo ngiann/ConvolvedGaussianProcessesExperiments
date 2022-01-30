@@ -63,7 +63,7 @@ function plotexperiment(; filenames = filenames,
 
         local kernelname, ef = d["kernelname"], d["eddingtonfraction"]
 
-        namestring = @sprintf("%s_%s_%f", d["objectname"], kernelname, ef)
+        namestring = @sprintf("%s_%s_%.2f", d["objectname"], kernelname, ef)
 
 
         # find index of most likely mass
