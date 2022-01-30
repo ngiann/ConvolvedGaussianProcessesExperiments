@@ -1,3 +1,12 @@
+#
+# To run multiple kernels and eddingtonfractions for the same dataset, use sth linke:
+#
+# K = ["matern12", "matern32", "rbf"]
+# E = [10.0, 20.0, 30.0]
+# comb = vec(collect(Base.Iterators.product(K,E)))
+# map(X->runexperiment(lambda = lambda, tobs = tobs, yobs = yobs, σobs = σobs, objectname = "Mrk279_2017", kernelname =  X[1], ef = X[2]), comb);
+#
+
 @everywhere using ConvolvedGaussianProcesses, ProgressMeter, Suppressor
 using Printf, MiscUtil, ADDatasets, TransferFunctions, JLD2
 
