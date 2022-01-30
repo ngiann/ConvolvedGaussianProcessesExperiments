@@ -34,6 +34,8 @@ function plotexperiment(; filenames = filenames,
 
     numberoffolds = length(data[1]["out"][1])
 
+    @printf("There are %d number of folds\n", numberoffolds)
+
     p = zeros(length(data))
 
     for i in 1:length(masses), j in 1:numberoffolds
