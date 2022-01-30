@@ -31,7 +31,7 @@ function runexperiment(; lambda = lambda, tobs = tobs, yobs = yobs, σobs = σob
     # warmup run #
     ##############
 
-    for _ in 1:3
+    for _ in 1:2
 
         # create candidate transfer functions
         Φ = [PhysicalTransferFunctions(mass = m, eddingtonfraction = ef, wavelengths = lambda) for m in masses]
