@@ -99,6 +99,6 @@ function plotexperiment(; filenames = filenames,
 
     #------------------------------------------
 
-    return p, stringcombinations
+    return p
 
 end
