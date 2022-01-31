@@ -11,7 +11,7 @@
 using Printf, MiscUtil, ADDatasets, TransferFunctions, JLD2
 
 
-function runexperiment(; lambda = lambda, tobs = tobs, yobs = yobs, σobs = σobs, objectname = objectname, kernelname = kernelname, ef = ef, transferFunctions = PhysicalTransferFunctions)
+function runexperiment(; lambda = lambda, tobs = tobs, yobs = yobs, σobs = σobs, objectname = objectname, kernelname = kernelname, ef = ef, transferFunctions = transferFunctions)
 
 
     colourprint(@sprintf("Started working on object |%s|\n", objectname), bold = true)
