@@ -11,7 +11,7 @@ TF = PhysicalTransferFunctions
 
 include("simulatenonoverlapping.jl")
 
-tobs, yobs, σobs, _tfarray_, lambda = simulatenonoverlapping(N=25, mass=2e8, σ=1.0,seed=2);
+tobs, yobs, σobs, _tfarray_, lambda = simulatenonoverlapping(seed = 1, mass = 1e8, eddingtonfraction = 10.0, ρ=2.0, σ = 1.0, N = 40,  kernelname="matern32")
 
 # specify kernels to try
 K = ["matern12", "matern32", "rbf"]
