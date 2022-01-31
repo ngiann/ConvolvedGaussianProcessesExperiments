@@ -21,7 +21,7 @@ The purpose of this numerical experiment is to see whether it is theoretically p
 |NON_OVERLAPPING_EF_30_rbf.jld2|	0.0975461100608111|
 
 
-This is the fit for the most likely mass:
+This is the fit for the most likely model NON_OVERLAPPING_EF_10_matern32.jld2:
 
 ![posterior_mass](Synthetics/Experiment3/results/NON_OVERLAPPING_matern32_10.00_bestfit.svg)
 
