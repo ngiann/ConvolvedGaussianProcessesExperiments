@@ -1,6 +1,6 @@
 # ConvolvedGaussianProcessesExperiments
 
-## Results
+## Results (currently refresing all results, links are broken for now)
 - Real data
   - [Mrk279_2017](Mrk279_2017.md)
   - [Mrk509_2016](Mrk509_2016.md)
