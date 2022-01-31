@@ -1,6 +1,6 @@
 # ConvolvedGaussianProcessesExperiments
 
-## Results (currently refresing all results, links are broken for now)
+## Results
 - Real data
   - [Mrk279_2017 with physical transfer functions](Mrk279_2017.md)
   - Mrk279_2017 with box transfer functions
