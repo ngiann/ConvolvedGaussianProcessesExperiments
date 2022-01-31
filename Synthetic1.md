@@ -1,17 +1,19 @@
 ## Synthetic, 1
 
-This experiment is coded in this [folder](Synthetics/Experiment2/).
+This experiment is coded in this [folder](Synthetics/Experiment1/).
 
 The purpose of this numerical experiment is to verify that our code can correctly recover the mass parameter.
 
-This is a figure of the synthetically generated light curves (on averate there is one observation per unit time):
+## Mass posteriors per model
 
-![Non_overlapping_lightcurves](Synthetics/Experiment2/lightcurves.png)
+![Mrk279_2017_posterior_mass](Mrk279_2017/Experiment1/results/massposterior.svg)
 
-This is the inferred posterior mass:
+## Posterior distribution of models
 
-![posterior_mass](Synthetics/Experiment2/posteriormass.png)
+| Model filename                | posterior prob     |
+|-------------------------------|--------------------|
 
-This is the fit for the most likely mass:
 
-![posterior_mass](Synthetics/Experiment2/bestfit.svg)
+### Fit for most likely model Mrk279_2017_EF_10_matern12.jld2
+
+![Mrk279_2017_best_model_fit](Mrk279_2017/Experiment1/results/Mrk279_2017_matern12_10.00_bestfit.svg)
