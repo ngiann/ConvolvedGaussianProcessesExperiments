@@ -9,7 +9,7 @@
 
 @everywhere using ConvolvedGaussianProcesses, ProgressMeter, Suppressor
 using Printf, MiscUtil, ADDatasets, TransferFunctions, JLD2
-using ConvolvedKernel, Random, Distributions, LinearAlgebra
+using ConvolvedKernel, Random, Distributions, LinearAlgebra, PyPlot
 
 function runexperiment(; lambda = lambda, tobs = tobs, yobs = yobs, σobs = σobs, objectname = objectname, kernelname = kernelname, ef = ef, transferFunctions = transferFunctions)
 
