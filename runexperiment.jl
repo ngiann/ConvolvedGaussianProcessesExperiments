@@ -11,7 +11,7 @@
 using Printf, MiscUtil, ADDatasets, TransferFunctions, JLD2
 
 
-function runexperiment(; lambda = lambda, tobs = tobs, yobs = yobs, σobs = σobs, objectname = objectname, kernelname = kernelname, ef = ef)
+function runexperiment(; lambda = lambda, tobs = tobs, yobs = yobs, σobs = σobs, objectname = objectname, kernelname = kernelname, ef = ef, transferFunctions = PhysicalTransferFunctions)
 
 
     colourprint(@sprintf("Started working on object |%s|\n", objectname), bold = true)
@@ -34,7 +34,7 @@ function runexperiment(; lambda = lambda, tobs = tobs, yobs = yobs, σobs = σob
     for _ in 1:2
 
         # create candidate transfer functions
-        Φ = [PhysicalTransferFunctions(mass = m, eddingtonfraction = ef, wavelengths = lambda) for m in masses]
+        Φ = [transferFunctions(mass = m, eddingtonfraction = ef, wavelengths = lambda) for m in masses]
 
         out = @showprogress pmap(tfarray-> (@suppress performcv(tarray=tobs, yarray=yobs, stdarray=σobs, kernelname=kernelname, tfarray=tfarray, iterations=10, numberofrestarts=1, ρmax=1.0)), Φ[1:nworkers()])
 
@@ -53,7 +53,7 @@ function runexperiment(; lambda = lambda, tobs = tobs, yobs = yobs, σobs = σob
     colourprint(@sprintf("Running %s with kernel=%s and eddingtonfraction=%d\n", objectname, kernelname, ef), foreground=:red, bold=true)
 
     # create candidate transfer functions
-    Φ = [PhysicalTransferFunctions(mass = m, eddingtonfraction = ef, wavelengths = lambda) for m in masses]
+    Φ = [transferFunctions(mass = m, eddingtonfraction = ef, wavelengths = lambda) for m in masses]
 
     out = @showprogress pmap(tfarray->(@suppress performcv(tarray=tobs, yarray=yobs, stdarray=σobs, kernelname=kernelname, tfarray=tfarray, iterations=3500, numberofrestarts=1, ρmax=20.0)), Φ)
 
