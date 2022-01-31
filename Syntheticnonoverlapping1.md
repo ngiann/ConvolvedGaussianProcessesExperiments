@@ -6,7 +6,7 @@ The purpose of this numerical experiment is to see whether it is theoretically p
 
 ## Mass posteriors per model 
 
-![Non_overlapping_lightcurves](Synthetics/Experiment3/results/massposterior.svg)
+![Non_overlapping_lightcurves](Synthetics/Experiment3/results/massposterior.png)
 
 
 This is the fit for the most likely mass:
