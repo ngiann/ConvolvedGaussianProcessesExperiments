@@ -8,7 +8,7 @@
 #
 
 @everywhere using ConvolvedGaussianProcesses, ProgressMeter, Suppressor
-using Printf, MiscUtil, ADDatasets, TransferFunctions, JLD2
+using Printf, MiscUtil, ADDatasets, TransferFunctions, JLD2, Random
 
 
 function runexperiment(; lambda = lambda, tobs = tobs, yobs = yobs, σobs = σobs, objectname = objectname, kernelname = kernelname, ef = ef, transferFunctions = transferFunctions)
