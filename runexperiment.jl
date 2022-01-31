@@ -55,7 +55,7 @@ function runexperiment(; lambda = lambda, tobs = tobs, yobs = yobs, σobs = σob
     # create candidate transfer functions
     Φ = [transferFunctions(mass = m, eddingtonfraction = ef, wavelengths = lambda) for m in masses]
 
-    out = @showprogress pmap(tfarray->(@suppress performcv(tarray=tobs, yarray=yobs, stdarray=σobs, kernelname=kernelname, tfarray=tfarray, iterations=3500, numberofrestarts=1, ρmax=20.0)), Φ)
+    out = @showprogress pmap(tfarray->(@suppress performcv(tarray=tobs, yarray=yobs, stdarray=σobs, kernelname=kernelname, tfarray=tfarray, iterations=3500, numberofrestarts=1, ρmax=20.0, fs = 250)), Φ)
 
     filename = @sprintf("%s_EF_%d_%s.jld2", objectname, Int(ef), kernelname)
 
