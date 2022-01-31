@@ -2,7 +2,8 @@
 
 ## Results (currently refresing all results, links are broken for now)
 - Real data
-  - [Mrk279_2017](Mrk279_2017.md)
+  - [Mrk279_2017 with physical transfer functions](Mrk279_2017.md)
+  - Mrk279_2017 with box transfer functions
   - [Mrk509_2016](Mrk509_2016.md)
 - Synthetic
   - [Synthetic, 1](Synthetic1.md)
