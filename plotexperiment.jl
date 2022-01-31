@@ -1,4 +1,4 @@
-using MiscUtil, PyPlot, JLD2, Statistics, StatsFuns, ConvolvedGaussianProcesses, ADDatasets, TransferFunctions, Printf, LinearAlgebra
+using MiscUtil, PyPlot, JLD2, Statistics, StatsFuns, ConvolvedGaussianProcesses, ADDatasets, TransferFunctions, Printf, LinearAlgebra, DelimitedFiles
 
 function plotexperiment(; filenames = filenames,
                           lambda = lambda, tobs = tobs, yobs = yobs, σobs = σobs)
@@ -119,6 +119,10 @@ function plotexperiment(; filenames = filenames,
         # legend()
 
     end
+
+    #------------------------------------------
+
+    writedlm("modelposterior.txt", [filenames p])
 
     #------------------------------------------
 
