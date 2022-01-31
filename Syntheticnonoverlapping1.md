@@ -1,19 +1,15 @@
-## Synthetic non-overlapping light curves, 1
+# Synthetic non-overlapping light curves, 1
 
 This experiment is coded in this [folder](Synthetics/Experiment3/).
 
 The purpose of this numerical experiment is to see whether it is theoretically possible to recover the mass parameter for a set of lightcurves that do not overlap in time.
 
-This is a figure of the synthetically generated light curves:
+## Mass posteriors per model 
 
-![Non_overlapping_lightcurves](Synthetics/Experiment3/lightcurves.png)
+![Non_overlapping_lightcurves](Synthetics/Experiment3/results/massposterior.svg)
 
-This is the inferred posterior mass:
-
-![posterior_mass](Synthetics/Experiment3/posteriormass.png)
 
 This is the fit for the most likely mass:
 
 ![posterior_mass](Synthetics/Experiment3/bestfit.png)
 
-Could it be that there is a difficulty with optimising the lengthscale?
