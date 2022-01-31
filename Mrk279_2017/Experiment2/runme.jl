@@ -18,4 +18,4 @@ E = [10.0, 20.0, 30.0]
 comb = vec(collect(Base.Iterators.product(K, E)))
 
 # run all experiments
-map(X -> runboxexperiment(transferFunctions = TF, lambda = lambda, tobs = tobs, yobs = yobs, σobs = σobs, objectname = SOURCE, kernelname =  X[1], ef = X[2]), comb);
+map(X -> runexperiment(transferFunctions = TF, lambda = lambda, tobs = tobs, yobs = yobs, σobs = σobs, objectname = SOURCE, kernelname =  X[1], ef = X[2]), comb);
