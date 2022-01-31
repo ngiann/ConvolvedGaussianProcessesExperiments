@@ -15,7 +15,7 @@ K = ["matern12", "matern32", "rbf"]
 E = [10.0, 20.0, 30.0]
 
 # make all combinations of K and E
-comb = vec(collect(Base.Iterators.product(K,E)))
+comb = vec(collect(Base.Iterators.product(K, E)))
 
 # run all experiments
 map(X -> runexperiment(transferFunctions = TF, lambda = lambda, tobs = tobs, yobs = yobs, σobs = σobs, objectname = SOURCE, kernelname =  X[1], ef = X[2]), comb);
