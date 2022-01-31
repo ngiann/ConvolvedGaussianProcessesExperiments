@@ -7,4 +7,4 @@
 - Synthetic
   - [Synthetic, 1](Synthetic1.md)
 - Synthetic, non-overlapping in time light curves
-  - [Synthetic, non-overlapping in time light curves, 1](Syntheticnonoverlapping1.md)
+  - [Synthetic 1, non-overlapping in time light curves](Syntheticnonoverlapping1.md)
