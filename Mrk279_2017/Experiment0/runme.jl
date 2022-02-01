@@ -69,6 +69,8 @@ let
 
     plot(accretions, accmarginal, "o-"); xscale("log")
 
+    savefig("posteriors.svg")
+
 
     # fit data with most likely transfer function
 
@@ -100,5 +102,7 @@ let
         plot(xtest, μ[i], "k-", linewidth=2)
 
     end
+
+    savefig("bestfit.svg")
 
 end
