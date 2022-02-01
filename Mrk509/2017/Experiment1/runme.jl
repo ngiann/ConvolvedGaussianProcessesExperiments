@@ -9,7 +9,7 @@ TF = PhysicalTransferFunctions
 lambda, tobs, yobs, σobs = readdataset(; source = SOURCE)
 
 # specify kernels to try
-K = ["matern12", "matern32", "rbf"]
+K = ["matern32"]
 
 # specify eddington fractions to try
 E = [10.0, 20.0, 30.0]
