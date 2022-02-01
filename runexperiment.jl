@@ -11,7 +11,7 @@
 using Printf, MiscUtil, ADDatasets, TransferFunctions, JLD2
 using ConvolvedKernel, Random, Distributions, LinearAlgebra, PyPlot
 
-function runexperiment(; lambda = lambda, tobs = tobs, yobs = yobs, σobs = σobs, objectname = objectname, kernelname = kernelname, ef = ef, transferFunctions = transferFunctions)
+function runexperiment(; numberofmasses = 64, lambda = lambda, tobs = tobs, yobs = yobs, σobs = σobs, objectname = objectname, kernelname = kernelname, ef = ef, transferFunctions = transferFunctions)
 
 
     colourprint(@sprintf("Started working on object |%s|\n", objectname), bold = true)
@@ -20,11 +20,13 @@ function runexperiment(; lambda = lambda, tobs = tobs, yobs = yobs, σobs = σob
 
     colourprint(@sprintf("ef is |%f|\n", ef))
 
+    colourprint(@sprintf("number of candidate masses is |%d|\n", numberofmasses))
+
     ###########################
     # set up parameter ranges #
     ###########################
 
-    masses = collect(logrange(1e5, 1e10, 64))
+    masses = collect(logrange(1e5, 1e10, numberofmasses))
 
 
     ##############
