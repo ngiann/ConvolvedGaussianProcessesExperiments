@@ -55,17 +55,17 @@ let
 
     title(EXPERIMENT)
 
-    subplot(211)
+    # subplot(211)
 
-    massmarginal = vec(sum(reshape(data["posterior"], size(TF)), dims=2))
+    massmarginal = vec(data["posterior"])
 
     plot(masses, massmarginal, "o-"); xscale("log")
 
-    subplot(212)
-
-    accmarginal = vec(sum(reshape(data["posterior"], size(TF)), dims=1))
-
-    plot(accretions, accmarginal, "o-"); xscale("log")
+    # subplot(212)
+    #
+    # accmarginal = vec(sum(reshape(data["posterior"], size(TF)), dims=1))
+    #
+    # plot(accretions, accmarginal, "o-"); xscale("log")
 
     savefig("posteriors.svg")
 
