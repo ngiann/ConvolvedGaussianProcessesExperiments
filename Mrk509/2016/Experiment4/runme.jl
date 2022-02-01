@@ -16,7 +16,7 @@ kernelname = "matern32"
 masses     = collect(logrange(1e6, 1e10, 64))
 
 # create combinations of transfer functions
-TF = [PhysicalTransferFunctionsEddington(mass=m, eddingtonfraction=1.0, wavelengths=lambda) for m in masses, a in accretions]
+TF = [PhysicalTransferFunctionsEddington(mass=m, eddingtonfraction=1.0, wavelengths=lambda) for m in masses]
 
 
 
