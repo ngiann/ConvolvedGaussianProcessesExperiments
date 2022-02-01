@@ -5,7 +5,7 @@
 SOURCE = "Mrk509_2017"
 
 
-lambda, tobs, yobs, σobs, tfarray = readdataset(source = SOURCE)
+lambda, tobs, yobs, σobs = readdataset(source = SOURCE)
 
 
 #-------------------------------------------------------------------------------
