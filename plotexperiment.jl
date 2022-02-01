@@ -80,7 +80,7 @@ function plotexperiment(; filenames = filenames,
 
         @printf("best mass for %s is %e\n", namestring, bestmass)
 
-        tfarray = PhysicalTransferFunctions(mass = bestmass, eddingtonfraction = ef, wavelengths = lambda)
+        tfarray = PhysicalTransferFunctionsEddington(mass = bestmass, eddingtonfraction = ef, wavelengths = lambda)
 
         _, pred = convolvedgp(tarray=tobs, yarray=yobs, stdarray=σobs, kernelname=kernelname, tfarray=tfarray, iterations=3000, numberofrestarts = 1, ρmax=20.0);
 

@@ -1,73 +1,45 @@
-#
-# To run multiple kernels and eddingtonfractions for the same dataset, use sth linke:
-#
-# K = ["matern12", "matern32", "rbf"]
-# E = [10.0, 20.0, 30.0]
-# comb = vec(collect(Base.Iterators.product(K,E)))
-# map(X->runexperiment(lambda = lambda, tobs = tobs, yobs = yobs, σobs = σobs, objectname = "Mrk279_2017", kernelname =  X[1], ef = X[2]), comb);
-#
-
 @everywhere using ConvolvedGaussianProcesses, ProgressMeter, Suppressor
 using Printf, MiscUtil, ADDatasets, TransferFunctions, JLD2
 using ConvolvedKernel, Random, Distributions, LinearAlgebra, PyPlot
 
-function runexperiment(; numberofmasses = 64, lambda = lambda, tobs = tobs, yobs = yobs, σobs = σobs, objectname = objectname, kernelname = kernelname, ef = ef, transferFunctions = transferFunctions)
+function runexperiment(experimentname; tobs = tobs, yobs = yobs, σobs = σobs, kernelname = kernelname, transferFunctions = transferFunctions, iterations = 3500, ρmax = 20.0, fs = 250)
 
 
-    colourprint(@sprintf("Started working on object |%s|\n", objectname), bold = true)
+    colourprint(@sprintf("Started experiment |%s|\n", experimentname), bold = true)
 
-    colourprint(@sprintf("kernelname is |%s|\n", kernelname))
+    colourprint(@sprintf("kernelname is |%s|\n", kernelname), foreground =:light_cyan)
 
-    colourprint(@sprintf("ef is |%f|\n", ef))
+    colourprint(@sprintf("number of candidate transfer functions is |%d|\n", length(transferFunctions)), foreground =:light_cyan)
 
-    colourprint(@sprintf("number of candidate masses is |%d|\n", numberofmasses))
+    colourprint(@sprintf("running for a maximum |%d| number of iterations\n",iterations), foreground =:light_cyan)
 
-    ###########################
-    # set up parameter ranges #
-    ###########################
+    colourprint(@sprintf("maximum length scale ρmax set to |%f|\n", ρmax), foreground =:light_cyan)
 
-    masses = collect(logrange(1e5, 1e10, numberofmasses))
+    colourprint(@sprintf("fs set to |%d|\n", fs), foreground =:light_cyan)
 
 
-    ##############
-    # warmup run #
-    ##############
-
-    for _ in 1:2
-
-        # create candidate transfer functions
-        Φ = [transferFunctions(mass = m, eddingtonfraction = ef, wavelengths = lambda) for m in masses]
-
-        out = @showprogress pmap(tfarray-> (@suppress performcv(tarray=tobs, yarray=yobs, stdarray=σobs, kernelname=kernelname, tfarray=tfarray, iterations=10, numberofrestarts=1, ρmax=1.0)), Φ[1:nworkers()])
-
-        JLD2.save("deleteme.jld2", "masses", masses, "eddingtonfraction", 10.0, "out", out, "kernelname", kernelname)
-
-    end
-
-    run(`rm deleteme.jld2`)
+    out = @showprogress pmap(tfarray->(@suppress performcv(tarray=tobs, yarray=yobs, stdarray=σobs, kernelname=kernelname, tfarray=tfarray, iterations=iterations, numberofrestarts=1, ρmax=ρmax, fs = fs)), transferFunctions)
 
 
-    ##############
-    # proper run #
-    ##############
+    filename = @sprintf("%s.jld2", experimentname)
+
+    JLD2.save(filename, "experimentname", experimentname,
+                        "out", out,
+                        "posterior", getprobabilities(out),
+                        "kernelname", kernelname,
+                        "tobs", tobs,
+                        "yobs", yobs,
+                        "σobs", σobs,
+                        "ρmax", ρmax,
+                        "fs", fs,
+                        "iterations", iterations,
+                        "besttransferfunctionarray", transferFunctions[argmax(getprobabilities(out))])
 
 
-    colourprint(@sprintf("Running %s with kernel=%s and eddingtonfraction=%d\n", objectname, kernelname, ef), foreground=:red, bold=true)
+    colourprint(@sprintf("Saved results in %s\n", filename), foreground =:light_cyan)
 
-    # create candidate transfer functions
-    Φ = [transferFunctions(mass = m, eddingtonfraction = ef, wavelengths = lambda) for m in masses]
+    colourprint(@sprintf("Finished experiment |%s|\n\n", experimentname), bold = true)
 
-    out = @showprogress pmap(tfarray->(@suppress performcv(tarray=tobs, yarray=yobs, stdarray=σobs, kernelname=kernelname, tfarray=tfarray, iterations=3500, numberofrestarts=1, ρmax=20.0, fs = 250)), Φ)
-
-    filename = @sprintf("%s_EF_%d_%s.jld2", objectname, Int(ef), kernelname)
-
-    JLD2.save(filename, "objectname", objectname, "masses", masses, "eddingtonfraction", ef, "out", out, "posterior", getprobabilities(out), "kernelname", kernelname)
-
-    @printf("Saved results in %s\n", filename)
-
-
-
-    colourprint(@sprintf("Finished working on object |%s|\n", objectname))
-
+    return filename
 
 end
