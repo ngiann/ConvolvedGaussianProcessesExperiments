@@ -15,7 +15,7 @@ lambda, tobs, yobs, σobs = lambda[1:2], tobs[1:2], yobs[1:2], σobs[1:2]
 kernelname = "matern32"
 
 # specify physical parameters
-masses     = collect(logrange(1e6, 1e10, 128))
+masses     = collect(logrange(1e5, 1e10, 128))
 
 # create combinations of transfer functions
 TF = [PhysicalTransferFunctionsEddington(mass=m, eddingtonfraction=10.0, wavelengths=lambda) for m in masses]
@@ -32,6 +32,8 @@ for _ in 1:2
 
     runexperiment("warmup_deleteme"; transferFunctions = TF[1:min(nworkers(), length(TF))], tobs = tobs, yobs = yobs, σobs = σobs, kernelname = kernelname, fs = 100, ρmax=1.0, iterations=2)
 
+    run(`rm $savedfile`)
+    
 end
 
 
