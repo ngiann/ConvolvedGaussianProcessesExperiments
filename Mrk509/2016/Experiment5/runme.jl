@@ -35,7 +35,7 @@ end
 
 # run all experiments
 
-EXPERIMENT = SOURCE * "PhysicalTFEddington"
+EXPERIMENT = SOURCE * "PhysicalTFEddington10"
 
 savedfile = runexperiment(EXPERIMENT; transferFunctions = TF, tobs = tobs, yobs = yobs, σobs = σobs, kernelname = kernelname, fs = 200, ρmax = 20.0)
 
