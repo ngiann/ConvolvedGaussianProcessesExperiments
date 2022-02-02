@@ -15,7 +15,7 @@ lambda, tobs, yobs, σobs = lambda[1:2], tobs[1:2], yobs[1:2], σobs[1:2]
 kernelname = "matern32"
 
 # specify physical parameters
-masses     = collect(logrange(1e5, 1e10, 128))
+masses     = collect(logrange(1e4, 1e10, 128))
 
 # create combinations of transfer functions
 TF = [PhysicalTransferFunctionsEddington(mass=m, eddingtonfraction=10.0, wavelengths=lambda) for m in masses]
