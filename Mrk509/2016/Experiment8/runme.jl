@@ -39,7 +39,7 @@ end
 
 # run all experiments
 
-EXPERIMENT = SOURCE * "PhysicalTFEddington10_first_and_third_wavelengths"
+EXPERIMENT = SOURCE * "PhysicalTFEddington10_third_and_first_wavelengths"
 
 savedfile = runexperiment(EXPERIMENT; transferFunctions = TF, tobs = tobs, yobs = yobs, σobs = σobs, kernelname = kernelname, fs = 200, ρmax = 20.0)
 
