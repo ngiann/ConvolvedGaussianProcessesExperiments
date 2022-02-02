@@ -3,7 +3,7 @@
 SOURCE = "SYNTH"
 
 
-lambda, tobs, yobs, σobs, tfarray = simulatedatafromgp(N=60, Tmax=100, mass=1e8, eddingtonfraction=10, kernelname = "matern32", seed=1)
+lambda, tobs, yobs, σobs, tfarray = simulatedatafromgp(N=60, Tmax=100, mass=1e8, accretion=0.222, kernelname = "matern32", seed=1)
 
 
 #-------------------------------------------------------------------------------
