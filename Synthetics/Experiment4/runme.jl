@@ -1,6 +1,6 @@
-# Get results for Mrk509_2016
+# Get results for Synthetic
 
-SOURCE = "Mrk509_2016"
+SOURCE = "SYNTH"
 
 
 lambda, tobs, yobs, σobs, tfarray = simulatedatafromgp(N=60, Tmax=100, mass=1e8, eddingtonfraction=10, kernelname = "matern32", seed=1)
