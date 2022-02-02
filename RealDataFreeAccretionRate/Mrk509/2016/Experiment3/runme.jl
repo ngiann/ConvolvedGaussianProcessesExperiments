@@ -42,7 +42,7 @@ end
 
 # run all experiments
 
-EXPERIMENT = SOURCE * "PhysicalTF"
+EXPERIMENT = SOURCE * "PhysicalTF_3WAVELENGTHS"
 
 savedfile = runexperiment(EXPERIMENT; transferFunctions = TF, tobs = tobs, yobs = yobs, σobs = σobs, kernelname = kernelname, fs = 200, ρmax = 16.0)
 
