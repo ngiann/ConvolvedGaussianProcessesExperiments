@@ -7,6 +7,8 @@ SOURCE = "Mrk509_2016"
 
 lambda, tobs, yobs, σobs = readdataset(source = SOURCE)
 
+lambda, tobs, yobs, σobs = lambda[1:3], tobs[1:3], yobs[1:3], σobs[1:3]
+
 
 #-------------------------------------------------------------------------------
 # SPECIFY TRANSFER FUNCTIONS
