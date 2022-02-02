@@ -30,10 +30,10 @@ TF = [PhysicalTransferFunctionsEddington(mass=m, eddingtonfraction=10.0, wavelen
 
 for _ in 1:2
 
-    runexperiment("warmup_deleteme"; transferFunctions = TF[1:min(nworkers(), length(TF))], tobs = tobs, yobs = yobs, σobs = σobs, kernelname = kernelname, fs = 100, ρmax=1.0, iterations=2)
+    savedfile = runexperiment("warmup_deleteme"; transferFunctions = TF[1:min(nworkers(), length(TF))], tobs = tobs, yobs = yobs, σobs = σobs, kernelname = kernelname, fs = 100, ρmax=1.0, iterations=2)
 
     run(`rm $savedfile`)
-    
+
 end
 
 
