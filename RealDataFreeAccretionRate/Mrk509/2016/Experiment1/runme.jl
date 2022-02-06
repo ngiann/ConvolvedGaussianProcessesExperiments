@@ -16,8 +16,8 @@ lambda, tobs, yobs, σobs = readdataset(source = SOURCE)
 kernelname = "matern32"
 
 # specify physical parameters
-masses     = collect(logrange(1e6, 1e10, 33))
-accretions = collect(logrange(0.01, 3,   33))
+masses     = collect(logrange(1e6,  1e10, 33))
+accretions = collect(logrange(0.01, 60.0, 33))
 
 # create combinations of transfer functions
 TF = [PhysicalTransferFunctions(mass=m, accretion=a, wavelengths=lambda) for m in masses, a in accretions]
