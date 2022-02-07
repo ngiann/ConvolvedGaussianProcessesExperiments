@@ -9,4 +9,6 @@ Populate with new experiments and results after updating physical transfer funct
   - [Mrk509_2017](Mrk509_2017.md)
   - Ngc2617
 - Synthetic
+  - [Synthetic 1](Synthetic1.md)
+  - [Synthetic 2 - incongruous lightcurve](Synthetic2.md)
 
