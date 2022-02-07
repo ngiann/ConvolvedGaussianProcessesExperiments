@@ -82,7 +82,7 @@ let
 
     subplot(211)
 
-    title(@sprintf("true mass is %e"), truemass)
+    title(@sprintf("true mass is %e", truemass))
 
     massmarginal = vec(sum(reshape(data["posterior"], size(TF)), dims=2))
 
@@ -90,7 +90,7 @@ let
 
     subplot(212)
 
-    title(@sprintf("true edfraction is %e"), trueedfrac)
+    title(@sprintf("true edfraction is %e", trueedfrac))
 
     accmarginal = vec(sum(reshape(data["posterior"], size(TF)), dims=1))
 
