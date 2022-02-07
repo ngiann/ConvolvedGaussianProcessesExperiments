@@ -4,7 +4,7 @@ SOURCE = "Mrk509_2016"
 
 lambda, tobs, yobs, σobs = readdataset(; source = SOURCE)
 
-lambda, tobs, yobs, σobs = lambda[[3;1]], tobs[[3;1]], yobs[[3;1]], σobs[[3;1]]
+# lambda, tobs, yobs, σobs = lambda[[3;1]], tobs[[3;1]], yobs[[3;1]], σobs[[3;1]]
 
 
 #-------------------------------------------------------------------------------
@@ -15,10 +15,12 @@ lambda, tobs, yobs, σobs = lambda[[3;1]], tobs[[3;1]], yobs[[3;1]], σobs[[3;1]
 kernelname = "matern32"
 
 # specify physical parameters
-masses     = collect(logrange(1e5, 1e10, 128))
+masses     = collect(logrange(1e5, 1e10, 64))
+
+eddingtonfractions = collect(1.0:2:35.0)
 
 # create combinations of transfer functions
-TF = [PhysicalTransferFunctionsEddington(mass=m, eddingtonfraction=10.0, wavelengths=lambda) for m in masses]
+TF = [PhysicalTransferFunctionsEddington(mass=m, eddingtonfraction=ef, wavelengths=lambda) for m in masses, ef in eddingtonfractions]
 
 
 
@@ -41,7 +43,7 @@ end
 
 EXPERIMENT = SOURCE * "PhysicalTFEddington10_third_and_first_wavelengths"
 
-savedfile = runexperiment(EXPERIMENT; transferFunctions = TF, tobs = tobs, yobs = yobs, σobs = σobs, kernelname = kernelname, fs = 200, ρmax = 20.0)
+savedfile = runexperiment(EXPERIMENT; transferFunctions = TF, tobs = tobs, yobs = yobs, σobs = σobs, kernelname = kernelname, fs = 150, ρmax = 20.0)
 
 
 #-------------------------------------------------------------------------------
