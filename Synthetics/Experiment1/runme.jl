@@ -4,8 +4,8 @@
 
 SOURCE = "SYNTH"
 
-truemass  = 1e8
-trueedfrac = 20
+truemass      = 1e8
+trueedfrac    = 20
 trueaccretion = TransferFunctions.massaccretionfunction(bhm = truemass, edfrac=trueedfrac, eta=0.1)
 
 lambda, tobs, yobs, σobs, = simulatedatafromgp(mass=truemass, accretion=trueaccretion, Tmax = 100, N=60)
