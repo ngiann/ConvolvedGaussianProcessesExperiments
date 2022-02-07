@@ -11,7 +11,9 @@ colourprint("Ignore first, extremely low wavelength", bold=true, foreground=:red
 
 lambda, tobs, yobs, σobs = lambda[2:end], tobs[2:end], yobs[2:end], σobs[2:end]
 
-colourprint("\nData have low wavelengths, hence we set fs to 1000\n", bold=true, foreground=:red)
+FS = 750
+
+colourprint(@sprintf("\nData have low wavelengths, hence we set fs to 1000\n", FS), bold=true, foreground=:red)
 
 #-------------------------------------------------------------------------------
 # SPECIFY TRANSFER FUNCTIONS
@@ -46,7 +48,7 @@ end
 
 EXPERIMENT = SOURCE
 
-savedfile = runexperiment(EXPERIMENT; transferFunctions = TF, tobs = tobs, yobs = yobs, σobs = σobs, kernelname = kernelname, fs = 1000, ρmax = 20.0)
+savedfile = runexperiment(EXPERIMENT; transferFunctions = TF, tobs = tobs, yobs = yobs, σobs = σobs, kernelname = kernelname, fs = FS, ρmax = 20.0)
 
 
 #-------------------------------------------------------------------------------
