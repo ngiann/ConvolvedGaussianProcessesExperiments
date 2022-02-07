@@ -71,8 +71,7 @@ let
 
     plot(accretions, accmarginal, "o-"); xscale("log")
 
-    savefig("posteriors.svg")
-    savefig("posteriors.png")
+    savefig("posteriors.svg"); savefig("posteriors.png")
 
 
     # fit data with most likely transfer function
@@ -106,7 +105,6 @@ let
 
     end
 
-    savefig("bestfit.svg")
-    savefig("bestfit.png")
+    savefig("bestfit.svg"); savefig("bestfit.png")
 
 end
