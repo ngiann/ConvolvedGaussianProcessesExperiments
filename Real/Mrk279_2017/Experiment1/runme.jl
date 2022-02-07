@@ -53,7 +53,9 @@ let
     data = load(savedfile)
 
 
-    # plot mass posterior
+    #---------------------#
+    # plot mass posterior #
+    #---------------------#
 
     figure()
 
@@ -74,7 +76,9 @@ let
     savefig("posteriors.svg"); savefig("posteriors.png")
 
 
-    # fit data with most likely transfer function
+    #---------------------------------------------#
+    # fit data with most likely transfer function #
+    #---------------------------------------------#
 
     bestTF = data["besttransferfunctionarray"]
 
@@ -87,7 +91,9 @@ let
     μ, σ = pred(xtest)
 
 
-    # plot most likely fit
+    #----------------------#
+    # plot most likely fit #
+    #----------------------#
 
     figure()
 
