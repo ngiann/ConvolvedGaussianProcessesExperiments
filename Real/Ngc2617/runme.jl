@@ -13,7 +13,7 @@ lambda, tobs, yobs, σobs = lambda[2:end], tobs[2:end], yobs[2:end], σobs[2:end
 
 FS = 750
 
-colourprint(@sprintf("\nData have low wavelengths, hence we set fs to 1000\n", FS), bold=true, foreground=:red)
+colourprint(@sprintf("\nData have low wavelengths, hence we set fs to %f\n", FS), bold=true, foreground=:red)
 
 #-------------------------------------------------------------------------------
 # SPECIFY TRANSFER FUNCTIONS
