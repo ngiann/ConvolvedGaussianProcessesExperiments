@@ -2,7 +2,7 @@
 # SPECIFY DATA
 #-------------------------------------------------------------------------------
 
-SOURCE = "Mrk509_2017"
+SOURCE = "Mrk279_2017"
 
 
 lambda, tobs, yobs, σobs = readdataset(source = SOURCE)
@@ -16,11 +16,12 @@ lambda, tobs, yobs, σobs = readdataset(source = SOURCE)
 kernelname = "matern32"
 
 # specify physical parameters
-masses     = collect(logrange(1e6, 1e10, 33))
-accretions = collect(logrange(0.01, 3,   33))
+masses     = collect(logrange(1e5, 1e10, 64))
+efractions = [10.0; 20.0; 30.0]
 
 # create combinations of transfer functions
-TF = [PhysicalTransferFunctions(mass=m, accretion=a, wavelengths=lambda) for m in masses, a in accretions]
+TF = [PhysicalTransferFunctionsEddington(mass=m, eddingtonfraction=ef, wavelengths=lambda) for m in masses, ef in efractions]
+
 
 
 #-------------------------------------------------------------------------------
@@ -38,7 +39,7 @@ end
 
 # run all experiments
 
-EXPERIMENT = SOURCE * "PhysicalTF"
+EXPERIMENT = SOURCE
 
 savedfile = runexperiment(EXPERIMENT; transferFunctions = TF, tobs = tobs, yobs = yobs, σobs = σobs, kernelname = kernelname, fs = 100, ρmax = 9.0)
 
