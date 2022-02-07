@@ -2,6 +2,10 @@
 # SPECIFY DATA
 #-------------------------------------------------------------------------------
 
+# Purpose of this script is just to verify that we can indeed recover the
+# physical parameters (mass and edfraction) in the case of synthetic data.
+# Here we control the ground truth and know what the result should be.
+
 SOURCE = "SYNTH"
 
 truemass      = 1e8
