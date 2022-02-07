@@ -71,7 +71,7 @@ let
 
     accmarginal = vec(sum(reshape(data["posterior"], size(TF)), dims=1))
 
-    plot(accretions, accmarginal, "o-"); xscale("log")
+    plot(efractions, accmarginal, "o-"); xscale("log")
 
     savefig("posteriors.svg"); savefig("posteriors.png")
 
