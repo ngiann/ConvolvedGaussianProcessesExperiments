@@ -42,7 +42,7 @@ for _ in 1:2
     runexperiment("warmup_deleteme"; transferFunctions = TF[1:min(nworkers(), length(TF))], tobs = tobs, yobs = yobs, σobs = σobs, kernelname = kernelname, fs = 100, ρmax=1.0, iterations=2)
 
     run(`rm warmup_deleteme.jld2`)
-    
+
 end
 
 
@@ -112,13 +112,15 @@ let
 
     for i in 1:length(lambda)
 
-        plot(tobs[i], yobs[i], "o", color = clr[i], markeredgecolor="k")
+        plot(tobs[i], yobs[i], "o", color = clr[i], markeredgecolor="k", label=@sprintf("λ=%.1f", lambda[i]))
 
         fill_between(xtest, μ[i] .+ σ[i], μ[i] .- σ[i], color=clr[i],  alpha=0.2)
 
-        plot(xtest, μ[i], "k-", linewidth=2)
+        plot(xtest, μ[i], "k-", linewidth=1)
 
     end
+
+    legend()
 
     savefig("bestfit.svg"); savefig("bestfit.png")
 
