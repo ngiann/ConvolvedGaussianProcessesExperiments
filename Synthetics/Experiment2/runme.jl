@@ -1,7 +1,9 @@
 
 # Purpose of this script is check out a particular model-misspecification scenario:
 # This scenario is the case where one of the lightcurves does not bear any connection
-# to the others. We expect the model in this case to set the scaling coefficient of
+# to the others. However, the irrelevant lightcurve has less observations than the others.
+# This resembles the MRK509_2016 case.
+# We expect the model in this case to set the scaling coefficient of
 # the irrelevant lightcurve to zero and still recover the true physical parameters.
 
 
@@ -20,7 +22,7 @@ lambda, tobs, yobs, σobs, = simulatedatafromgp(mass=truemass, accretion=trueacc
 
 # generate one more dataset with different seed
 
-lambdaX, tobsX, yobsX, σobsX, = simulatedatafromgp(mass=truemass, accretion=trueaccretion, Tmax = 100, N=60, seed = 10101)
+lambdaX, tobsX, yobsX, σobsX, = simulatedatafromgp(mass=truemass, accretion=trueaccretion, Tmax = 30, N=20, seed = 10101)
 
 # copy the 4th lightcurve to the original dataset
 tobs[4], yobs[4], σobs[4] = tobsX[4], yobsX[4], σobsX[4]
