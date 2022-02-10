@@ -11,4 +11,5 @@ Refreshed experiments
 - Synthetic
   - [Synthetic 1](Synthetic1.md)
   - [Synthetic 2 - incongruous lightcurve](Synthetic2.md)
+  - [Synthetic 3 - incongruous lightcurve](Synthetic3.md)
 
