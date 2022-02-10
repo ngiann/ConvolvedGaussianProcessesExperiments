@@ -1,6 +1,6 @@
 # ConvolvedGaussianProcessesExperiments
 
-Populate with new experiments and results after updating physical transfer function
+Refreshed experiments
 
 ## Results
 - Real data
