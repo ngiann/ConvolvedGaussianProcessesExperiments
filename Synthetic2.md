@@ -17,7 +17,7 @@ Code and results for experiment [here](Synthetics/Experiment2/).
 
 ![Synth1 best_model_fit](Synthetics/Experiment2/bestfit.svg)
 
-## Why simulation does not meet our expectation
+## Why the simulation does not meet our expectation
 
 Although we have setup this simulation to resemble the situation in MRK509_2016 (where the last lightcurve has its scale set to 0),
 this does not happen here. The reason seems to be the fact that the variance of the incongruous lightcurve is significant and hence a flat line is not good enough to describe it. We have setup a new experiment [here](Synthetics3.md) that sets variance of the incongruous lightcurve to a lower value.
