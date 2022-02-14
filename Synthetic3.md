@@ -6,7 +6,7 @@ Our expectation is that the model should set the scaling coefficient of the ligh
 
 In this simulation, it is the fourth lightcurve that does not belong.
 
-This simulation is very similar to this [one](Synthetic2.md), the difference being that here we make the variance of the incongruous lightcurve smaller.
+This simulation is identical to this [one](Synthetic2.md), the difference being that here we shift the incongruous lighturve (just for vieweing purposes) and make its variance smaller.
 
 
 Code and results for experiment [here](Synthetics/Experiment3/).
