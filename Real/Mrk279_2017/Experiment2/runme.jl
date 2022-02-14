@@ -13,7 +13,7 @@ lambda, tobs, yobs, σobs = readdataset(source = SOURCE)
 #-------------------------------------------------------------------------------
 
 # specify kernel
-kernelname = "RBF"
+kernelname = "rbf"
 
 # specify physical parameters
 masses     = collect(logrange(1e5, 1e10, 64))
