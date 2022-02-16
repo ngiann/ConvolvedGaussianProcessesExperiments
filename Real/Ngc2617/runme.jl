@@ -23,7 +23,7 @@ colourprint(@sprintf("\nData have low wavelengths, hence we set fs to %f\n", FS)
 kernelname = "matern32"
 
 # specify physical parameters
-masses     = collect(logrange(1e6, 1e10, 64))
+masses     = collect(logrange(1e5, 1e10, 64))
 efractions = [10.0; 20.0; 30.0]
 
 # create combinations of transfer functions
