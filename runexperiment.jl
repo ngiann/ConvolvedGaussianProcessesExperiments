@@ -21,11 +21,19 @@ function runexperiment(experimentname; tobs = tobs, yobs = yobs, σobs = σobs, 
     out = @showprogress pmap(tfarray->(@suppress performcv(tarray=tobs, yarray=yobs, stdarray=σobs, kernelname=kernelname, tfarray=tfarray, iterations=iterations, numberofrestarts=1, ρmax=ρmax, fs = fs)), transferFunctions)
 
 
+    masses     = [mass(tf)      for tf in transferFunctions]
+    accretions = [accretion(tf) for tf in transferFunctions]
+    centroids  = [centroid(tf)  for tf in transferFunctions]
+
+
     filename = @sprintf("%s.jld2", experimentname)
 
     JLD2.save(filename, "experimentname", experimentname,
                         "out", out,
-                        "posterior", getprobabilities(out),
+                        "posterior", reshape(getprobabilities(out), size(out)),
+                        "masses",     masses,
+                        "accretions", accretions,
+                        "centroids",  centroids,
                         "kernelname", kernelname,
                         "tobs", tobs,
                         "yobs", yobs,
