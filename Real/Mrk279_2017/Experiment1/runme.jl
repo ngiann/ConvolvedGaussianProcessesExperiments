@@ -17,7 +17,7 @@ kernelname = "matern32"
 
 # specify physical parameters
 masses     = collect(logrange(1e5, 1e10, 64))
-efractions = [10.0; 20.0; 30.0]
+efractions = [1.0; 5.0; 10.0]
 
 # create combinations of transfer functions
 TF = [PhysicalTransferFunctionsEddington(mass=m, eddingtonfraction=ef, wavelengths=lambda) for m in masses, ef in efractions]
