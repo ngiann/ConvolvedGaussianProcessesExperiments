@@ -66,7 +66,7 @@ let
 
     μ, σ = pred(xtest)
 
-    JLD2.save("predictions.jld2", "xtest", xtest, "μ", μ, "σ", σ)
+    JLD2.save("predictions.jld2", "xtest", collect(xtest), "μ", μ, "σ", σ)
 
 
     #----------------------#
