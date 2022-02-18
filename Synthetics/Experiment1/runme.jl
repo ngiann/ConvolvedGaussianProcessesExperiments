@@ -31,4 +31,4 @@ efractions = [10.0; 20.0; 30.0]
 # create combinations of transfer functions
 TF = [PhysicalTransferFunctionsEddington(mass=m, eddingtonfraction=ef, wavelengths=lambda) for m in masses, ef in efractions]
 
-include("../../../runcommonpart.jl")
+include("../../runmecommonpart.jl")

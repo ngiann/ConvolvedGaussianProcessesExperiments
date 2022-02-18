@@ -21,9 +21,9 @@ function runexperiment(experimentname; tobs = tobs, yobs = yobs, σobs = σobs, 
     out = @showprogress pmap(tfarray->(@suppress performcv(tarray=tobs, yarray=yobs, stdarray=σobs, kernelname=kernelname, tfarray=tfarray, iterations=iterations, numberofrestarts=1, ρmax=ρmax, fs = fs)), transferFunctions)
 
 
-    masses     = [mass(tf)      for tf in transferFunctions]
-    accretions = [accretion(tf) for tf in transferFunctions]
-    centroids  = [centroid(tf)  for tf in transferFunctions]
+    masses     = [mass(tf[1])      for tf in transferFunctions]
+    accretions = [accretion(tf[1]) for tf in transferFunctions]
+    centroids  = [[centroid(tf[i]) for i in 1:length(tf)]  for tf in transferFunctions]
 
 
     filename = @sprintf("%s.jld2", experimentname)
