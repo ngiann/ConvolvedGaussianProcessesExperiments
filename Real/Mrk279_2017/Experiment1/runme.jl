@@ -35,7 +35,7 @@ for _ in 1:2
     runexperiment("warmup_deleteme"; transferFunctions = TF[1:min(nworkers(), length(TF))], tobs = tobs, yobs = yobs, σobs = σobs, kernelname = kernelname, fs = 100, ρmax=1.0, iterations=2)
 
     run(`rm warmup_deleteme.jld2`)
-    
+
 end
 
 
@@ -91,6 +91,8 @@ let
     xtest = LinRange(minimum(map(minimum, tobs)), maximum(map(maximum, tobs)), 2500)
 
     μ, σ = pred(xtest)
+
+    JLD2.save("predictions.jld2", "xtest", xtest, "μ", μ, "σ", σ)
 
 
     #----------------------#
