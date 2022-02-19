@@ -22,7 +22,7 @@ For each combination, we perform a 5-fold cross-validation and use the result to
 Once we have collected the fitnesses of all combinations, we calculate the posterior probability of the combinations. The posterior tells us how likely each combination is relatively to all other combinations. 
 
 As an example, we look at the results of Mrk279_2017. 
-We change in the corresponding folder (in this case RELATIVEPATH/ConvolvedGaussianProcessesExperiments/Real/Mrk279_2017/Experiment1/), start Julia and load the data:
+We change in the corresponding folder (in this case `RELATIVEPATH/ConvolvedGaussianProcessesExperiments/Real/Mrk279_2017/Experiment1/`), start Julia and load the data:
 ```
 using JLD2, ADDatasets, PyPlot, MiscUtil, TransferFunctions
 lambda, = readdataset(source = "Mrk279_2017"); # load only wavelengths
@@ -31,15 +31,23 @@ lambda, = readdataset(source = "Mrk279_2017"); # load only wavelengths
 The folder contains a file named after the object source and extension "jld2". For the case of Mrk279_2017 the file is called "Mrk279_2017.jld2". We load this file:
 ```
 @load "Mrk279_2017.jld2" # warnings may appear
-```
 
-Loading the file introduces a number of variables in the workspace that will be listed in the REPL once the command has been executed. The variables that we will be looking at are `masses`, `accretions`, `centroids` and `posterior`. These are all matrices with dimensions *(number of candidate masses)×(number of candidate eddington fractions)*.
-
-Matrix `posterior` contains the posterior probability of each combination of mass and eddingtonfraction. There are 64 candidate masses (64 rows) and 3 candidate eddington fractions (3 columns) To inspect the posterior of e.g. 5th candidate mass and 2nd candidate eddington fraction, do: 
-```
 # create matrix of eddington fractions because they are not saved in jld2 file.
 edfractions = kron([1;5;10]', ones(64)) 
+```
 
+Loading the file introduces a number of variables in the workspace that will be listed in the REPL. We will look at the variables `masses`, `accretions`, `centroids`, `posterior` and `edfractions` that we just created. These are all matrices with dimensions *(number of candidate masses)×(number of candidate eddington fractions)*:
+```
+map(size, [edfractions, masses, accretions, centroids, posterior])
+```
+There are 64 candidate masses (64 rows) and 3 candidate eddington fractions (3 columns)
+
+Each entry in matrix `posterior` contains the posterior probability of a particular combination of mass and eddingtonfraction.
+The elements in matrix `posterior` correspond to the elements in the matrices `masses`, `accretions`, `centroids`,  and `edfractions`.
+This means that if we want to find out which 
+
+There are 64 candidate masses (64 rows) and 3 candidate eddington fractions (3 columns) To inspect the posterior of e.g. 5th candidate mass and 2nd candidate eddington fraction, do: 
+```
 i,j = 5, 2 # specify combination
 
 posterior[i,j] # returns posterior probability
