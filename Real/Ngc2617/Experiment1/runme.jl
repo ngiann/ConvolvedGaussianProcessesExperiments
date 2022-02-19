@@ -7,6 +7,10 @@ SOURCE = "Ngc2617"
 
 lambda, tobs, yobs, σobs = readdataset(source = SOURCE)
 
+# ignore first wavelength
+
+lambda, tobs, yobs, σobs = lambda[2:end], tobs[2:end], yobs[2:end], σobs[2:end]
+
 
 #-------------------------------------------------------------------------------
 # SPECIFY TRANSFER FUNCTIONS
