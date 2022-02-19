@@ -38,9 +38,24 @@ The folder contains a file named after the source and extension "jld2". For the 
 @load "Mrk279_2017.jld2" # warnings may appear
 ```
 
-Loading the file introduces a number of variables that will be listed in the REPL once the command has been executed. The variables that we will be looking at are `masses`, `accretions`, `centroids` and `posterior`. These are all matrices with dimensions *(number of candidate masses)×(number of candidate eddingtonfractions)*.
+Loading the file introduces a number of variables that will be listed in the REPL once the command has been executed. The variables that we will be looking at are `masses`, `accretions`, `centroids` and `posterior`. These are all matrices with dimensions *(number of candidate masses)×(number of candidate eddington fractions)*.
 
-Matrix `posterior` containts the posterior probability of each combination of mass and accretion.
+Matrix `posterior` containts the posterior probability of each combination of mass and eddingtonfraction. There are 64 candidate masses, hence 64 rows, and 3 candidate eddington fractions, hence 3 columns. To inspect the posterior of e.g. 5th candidate mass and 2nd candidate eddington fraction, do: 
+```
+i,j = 5, 2 # specify combination
+posterior[i,j] # returned posterior probability
+masses[i,j] # returns the mass of combination
+accretions[i,j] # returns accretion rate of combination
+centroids[i,j] # returns centroids per wavelength in same order as lambda when loading dataset
+```
+
+To find the most likely combination:
+```
+bestindex = argmax(posterior)
+masses[bestindex]
+accretions[bestindex]
+centroids[bestindex]
+```
 
 
 
