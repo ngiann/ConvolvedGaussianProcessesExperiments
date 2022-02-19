@@ -68,8 +68,9 @@ plot(masses[:,1], posterior[:,j], "o-"); xscale("log")
 
 To plot the delay posterior at k-th wavelength, for the j-th eddington fractio, do:
 ```
+k=1
 figure()
-plot([c[k] for c in centroids[:,j]], posterior[:,j]); xscale("log")
+plot([c[k] for c in centroids[:,j]], posterior[:,j], "o-"); xscale("log")
 ``` 
 
 To plot the fit for the most likely fit, we load:
