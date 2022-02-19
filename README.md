@@ -22,7 +22,7 @@ For each combination, we perform a 5-fold cross-validation and use the result to
 Once we have collected the fitnesses of all combinations, we calculate the posterior probability of the combinations. The posterior tells us how likely each combination is relatively to all other combinations. 
 
 As an example, we look at the results of Mrk279_2017. 
-We change in the corresponding folder, start Julia and load the data:
+We change in the corresponding folder (in this case RELATIVEPATH/ConvolvedGaussianProcessesExperiments/Real/Mrk279_2017/Experiment1/), start Julia and load the data:
 ```
 using JLD2, ADDatasets, PyPlot, MiscUtil, TransferFunctions
 lambda, = readdataset(source = "Mrk279_2017"); # load only wavelengths
