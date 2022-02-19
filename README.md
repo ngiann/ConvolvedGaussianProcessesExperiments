@@ -28,7 +28,7 @@ Once we have collected the fitnesses of all combinations, we calculate the poste
 As an example, we look at the results of Mrk279_2017. 
 We change in the corresponding folder (in this case `RELATIVEPATH/ConvolvedGaussianProcessesExperiments/Real/Mrk279_2017/Experiment1/`), start Julia and load the data:
 ```
-using JLD2, ADDatasets, PyPlot, MiscUtil, TransferFunctions
+using Printf, JLD2, ADDatasets, PyPlot, MiscUtil, TransferFunctions
 lambda, = readdataset(source = "Mrk279_2017"); # load only wavelengths
 ```
 
