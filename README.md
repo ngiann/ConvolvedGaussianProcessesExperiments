@@ -16,16 +16,7 @@ Refreshed experiments
 
 ## How to read the results for real data
 
-All experiments with real data use the same grid of candidate values and the same kernel:
-```
-# specify kernel
-kernelname = "matern32"
-
-# specify physical parameters
-masses     = collect(logrange(1e5, 1e10, 64))
-efractions = [1.0; 5.0; 10.0]
-```
-
+All experiments with real data use the same grid of candidate values and the same kernel i.e. "matern32"
 As an example, we look at the results of Mrk279_2017. 
 We change in the corresponding folder, start Julia and load the data:
 ```
