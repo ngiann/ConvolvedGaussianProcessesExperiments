@@ -16,10 +16,14 @@ Refreshed experiments
 
 ## How to read the results for real data
 
-All experiments with real data use the same kernel "matern32".
-As a reminder: for each object we try out a set of mass-eddington fraction combinations.
+
+##### Brief overview
+
+All experiments on real data use the "matern32" kernel. For each object we try out a set of mass-eddington fraction combinations.
 For each combination, we perform a 5-fold cross-validation and use the result to calculate a fitness value (i.e. log-likelihood) that tells us how well the combination in question fits the data.
 Once we have collected the fitnesses of all combinations, we calculate the posterior probability of the combinations. The posterior tells us how likely each combination is relatively to all other combinations. 
+
+##### Mrk279_2017 example
 
 As an example, we look at the results of Mrk279_2017. 
 We change in the corresponding folder (in this case `RELATIVEPATH/ConvolvedGaussianProcessesExperiments/Real/Mrk279_2017/Experiment1/`), start Julia and load the data:
@@ -55,7 +59,9 @@ centroids[i,j] # returns centroids per wavelength in same order as lambda when l
 edfractions[i,j] # return eddington fraction of combination
 ```
 
-To find the most likely combination and look at its mass, accretion and centroids, we do:
+##### Most likely combination
+
+To find the most likely combination (i.e. highest posterior probability) and look at its mass, accretion and centroids, we do:
 ```
 bestindex = argmax(posterior)
 masses[bestindex]
@@ -63,6 +69,8 @@ accretions[bestindex]
 centroids[bestindex]
 edfractions[bestindex]
 ```
+
+##### Mass posterior
 
 To plot the marginal posterior for mass (over all Eddington fractions), we do:
 ```
@@ -76,12 +84,16 @@ figure()
 plot(masses[:,1], posterior[:,j], "o-"); xscale("log")
 ```
 
+##### Delay posterior
+
 To plot the delay posterior at k-th wavelength, for the j-th eddington fraction, we do:
 ```
 k=1
 figure()
 plot([c[k] for c in centroids[:,j]], posterior[:,j], "o-"); xscale("log")
 ``` 
+
+##### Predictions for most likely combination
 
 To plot the fit for the most likely combination, we load:
 ```
