@@ -40,7 +40,7 @@ accretions[i,j] # returns accretion rate of combination
 centroids[i,j] # returns centroids per wavelength in same order as lambda when loading dataset
 ```
 
-To find the most likely combination:
+To find the most likely combination and look at its mass, accretion and centroids, do:
 ```
 bestindex = argmax(posterior)
 masses[bestindex]
