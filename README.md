@@ -29,7 +29,7 @@ The folder contains a file named after the source and extension "jld2". For the 
 @load "Mrk279_2017.jld2" # warnings may appear
 ```
 
-Loading the file introduces a number of variables that will be listed in the REPL once the command has been executed. The variables that we will be looking at are `masses`, `accretions`, `centroids` and `posterior`. These are all matrices with dimensions *(number of candidate masses)×(number of candidate eddington fractions)*.
+Loading the file introduces a number of variables in the workspace that will be listed in the REPL once the command has been executed. The variables that we will be looking at are `masses`, `accretions`, `centroids` and `posterior`. These are all matrices with dimensions *(number of candidate masses)×(number of candidate eddington fractions)*.
 
 Matrix `posterior` contains the posterior probability of each combination of mass and eddingtonfraction. There are 64 candidate masses (64 rows) and 3 candidate eddington fractions (3 columns) To inspect the posterior of e.g. 5th candidate mass and 2nd candidate eddington fraction, do: 
 ```
@@ -64,3 +64,21 @@ To plot the mass posterior for the j-th eddington fraction do:
 plot(masses[:,1], posterior[:,j], "o-"); xscale("log")
 ```
 
+To plot the fit for the most likely fit, load:
+```
+@load "predictions.jld2"
+```
+
+This introduces that variables `xtest`, `μ` and `σ` in the workspace. `xtest` holds the prediction times. `μ` and `σ` are each an array of arrays. The outer dimension goes over the wavelengths (as specified in `lambda`) and the inner array holds the prediction at the given times `xtest`.
+
+Let us plot the predictions over the data:
+```
+plotdataset(source = "Mrk279_2017");
+clrs = ["blue", "orange", "green", "red]
+
+for (index, λ) in enumerate(lambda)
+  plot(xtest, μ[index], color=clrs[index])
+  fill_between(xtest, μ.-σ,μ.+σ, color=clrs[index], alpha=0.3)
+end
+
+```
