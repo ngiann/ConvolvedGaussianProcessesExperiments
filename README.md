@@ -74,7 +74,7 @@ This introduces that variables `xtest`, `μ` and `σ` in the workspace. `xtest` 
 Let us plot the predictions over the data:
 ```
 plotdataset(source = "Mrk279_2017");
-clrs = ["blue", "orange", "green", "red]
+clrs = ["blue", "orange", "green", "red"]
 
 for (index, λ) in enumerate(lambda)
   plot(xtest, μ[index], color=clrs[index])
