@@ -56,13 +56,21 @@ edfractions[bestindex]
 
 To plot the marginal posterior for mass do:
 ```
+figure()
 plot(masses[:,1], sum(posterior, dims=2), "o-", label="first"); xscale("log")
 ```
 
 To plot the mass posterior for the j-th eddington fraction do:
 ```
+figure()
 plot(masses[:,1], posterior[:,j], "o-"); xscale("log")
 ```
+
+To plot the delay posterior at k-th wavelength, for the j-th eddington fractio, do:
+```
+figure()
+plot([c[k] for c in centroids[:,j]], posterior[:,j]); xscale("log")
+``` 
 
 To plot the fit for the most likely fit, we load:
 ```
