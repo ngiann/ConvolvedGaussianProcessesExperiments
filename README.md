@@ -49,7 +49,7 @@ centroids[i,j] # returns centroids per wavelength in same order as lambda when l
 edfractions[i,j] # return eddington fraction of combination
 ```
 
-To find the most likely combination and look at its mass, accretion and centroids, do:
+To find the most likely combination and look at its mass, accretion and centroids, we do:
 ```
 bestindex = argmax(posterior)
 masses[bestindex]
@@ -58,19 +58,19 @@ centroids[bestindex]
 edfractions[bestindex]
 ```
 
-To plot the marginal posterior for mass do:
+To plot the marginal posterior for mass, we do:
 ```
 figure()
 plot(masses[:,1], sum(posterior, dims=2), "o-", label="first"); xscale("log")
 ```
 
-To plot the mass posterior for the j-th eddington fraction do:
+To plot the mass posterior for the j-th eddington fraction, we do:
 ```
 figure()
 plot(masses[:,1], posterior[:,j], "o-"); xscale("log")
 ```
 
-To plot the delay posterior at k-th wavelength, for the j-th eddington fraction, do:
+To plot the delay posterior at k-th wavelength, for the j-th eddington fraction, we do:
 ```
 k=1
 figure()
