@@ -64,13 +64,13 @@ centroids[bestindex]
 edfractions[bestindex]
 ```
 
-To plot the marginal posterior for mass, we do:
+To plot the marginal posterior for mass (over all Eddington fractions), we do:
 ```
 figure()
 plot(masses[:,1], sum(posterior, dims=2), "o-", label="first"); xscale("log")
 ```
 
-To plot the mass posterior for the j-th eddington fraction, we do:
+To plot the mass posterior for the j-th eddington fraction (conditional posterior), we do:
 ```
 figure()
 plot(masses[:,1], posterior[:,j], "o-"); xscale("log")
