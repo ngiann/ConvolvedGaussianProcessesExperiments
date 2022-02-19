@@ -37,7 +37,8 @@ Matrix `posterior` contains the posterior probability of each combination of mas
 edfractions = kron([1;5;10]', ones(64)) 
 
 i,j = 5, 2 # specify combination
-posterior[i,j] # returned posterior probability
+
+posterior[i,j] # returns posterior probability
 masses[i,j] # returns the mass of combination
 accretions[i,j] # returns accretion rate of combination
 centroids[i,j] # returns centroids per wavelength in same order as lambda when loading dataset
