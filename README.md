@@ -36,7 +36,7 @@ The folder contains a file named after the object source and extension "jld2". F
 edfractions = kron([1;5;10]', ones(64)) 
 ```
 
-Loading the file introduces a number of variables in the workspace that will be listed in the REPL. We will look at the variables `masses`, `accretions`, `centroids`, `posterior` and `edfractions` that we just created. These are all matrices with dimensions *(number of candidate masses)×(number of candidate eddington fractions)*:
+Loading the file introduces a number of variables in the workspace that will be listed in the REPL. We will look at the variables `masses`, `accretions`, `centroids`, `posterior` that we just loaded and `edfractions` that we just created. These are all matrices with dimensions *(number of candidate masses)×(number of candidate eddington fractions)*:
 ```
 map(size, [edfractions, masses, accretions, centroids, posterior])
 ```
