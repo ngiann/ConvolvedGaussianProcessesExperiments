@@ -17,6 +17,10 @@ Refreshed experiments
 ## How to read the results for real data
 
 All experiments with real data use the same kernel "matern32".
+As a reminder: for each object we try a set of combinations of masses and eddington fractions.
+For each combination, we perform a 5-fold cross-validation and use the result to calculate how well the combination in question fits the data.
+One we have collected all the fitnesses of the combinations, we calculate the posterior probability of the combinations. The posterior tells us how likely each combination is relatively to all other combinations. 
+
 As an example, we look at the results of Mrk279_2017. 
 We change in the corresponding folder, start Julia and load the data:
 ```
