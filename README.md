@@ -17,7 +17,7 @@ Refreshed experiments
 ## How to read the results for real data
 
 All experiments with real data use the same kernel "matern32".
-As a reminder: for each object we try a set of combinations of masses and eddington fractions.
+As a reminder: for each object we try out a set of mass-eddington fraction combinations.
 For each combination, we perform a 5-fold cross-validation and use the result to calculate how well the combination in question fits the data.
 Once we have collected the fitnesses of all combinations, we calculate the posterior probability of the combinations. The posterior tells us how likely each combination is relatively to all other combinations. 
 
