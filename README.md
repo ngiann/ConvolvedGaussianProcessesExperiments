@@ -78,7 +78,7 @@ clrs = ["blue", "orange", "green", "red"]
 
 for (index, λ) in enumerate(lambda)
   plot(xtest, μ[index], color=clrs[index])
-  fill_between(xtest, μ.-σ,μ.+σ, color=clrs[index], alpha=0.3)
+  fill_between(xtest, μ[index] .- σ[index], μ[index] .+ σ[index], color=clrs[index], alpha=0.3)
 end
 
 ```
