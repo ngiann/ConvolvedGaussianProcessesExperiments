@@ -96,7 +96,7 @@ plotdataset(source = "Mrk279_2017");
 clrs = ["blue", "orange", "green", "red"]
 
 for (index, λ) in enumerate(lambda)
-  plot(xtest, μ[index], color=clrs[index])
+  plot(xtest, μ[index], color=clrs[index], label=@sprintf("%f", λ))
   fill_between(xtest, μ[index] .- σ[index], μ[index] .+ σ[index], color=clrs[index], alpha=0.3)
 end
 
