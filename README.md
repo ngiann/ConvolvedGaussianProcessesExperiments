@@ -16,7 +16,7 @@ Refreshed experiments
 
 ## How to read the results for real data
 
-All experiments with real data use the same same kernel "matern32".
+All experiments with real data use the same kernel "matern32".
 As an example, we look at the results of Mrk279_2017. 
 We change in the corresponding folder, start Julia and load the data:
 ```
