@@ -21,7 +21,7 @@ As an example, we look at the results of Mrk279_2017.
 We change in the corresponding folder, start Julia and load the data:
 ```
 using JLD2, ADDatasets, PyPlot, MiscUtil, TransferFunctions
-lambda, tobs, yobs, σobs = readdataset(source = "Mrk279_2017");
+lambda, = readdataset(source = "Mrk279_2017"); # load only wavelengths
 ```
 
 The folder contains a file named after the source and extension "jld2". For the case of Mrk279_2017 the file is called "Mrk279_2017.jld2". We load this file:
@@ -64,7 +64,7 @@ To plot the mass posterior for the j-th eddington fraction do:
 plot(masses[:,1], posterior[:,j], "o-"); xscale("log")
 ```
 
-To plot the fit for the most likely fit, load:
+To plot the fit for the most likely fit, we load:
 ```
 @load "predictions.jld2"
 ```
