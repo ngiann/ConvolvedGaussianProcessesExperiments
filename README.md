@@ -38,7 +38,9 @@ The folder contains a file named after the source and extension "jld2". For the 
 @load "Mrk279_2017.jld2" # warnings may appear
 ```
 
-Loading the file introduces a number of variables that will be listed in the REPL once the command has been executed. The variables that we will be looking at are "masses", "accretions", "centroids" and "posterior".
+Loading the file introduces a number of variables that will be listed in the REPL once the command has been executed. The variables that we will be looking at are `masses`, `accretions`, `centroids` and `posterior`. These are all matrices with dimensions *(number of candidate masses)×(number of candidate eddingtonfractions)*.
+
+Matrix `posterior` containts the posterior probability of each combination of mass and accretion.
 
 
 
