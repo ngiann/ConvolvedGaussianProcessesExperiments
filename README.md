@@ -16,7 +16,7 @@ Refreshed experiments
 
 ## How to read the results for real data
 
-All experiments with real data use the same grid of candidate values and the same kernel i.e. "matern32"
+All experiments with real data use the same same kernel "matern32".
 As an example, we look at the results of Mrk279_2017. 
 We change in the corresponding folder, start Julia and load the data:
 ```
@@ -31,13 +31,17 @@ The folder contains a file named after the source and extension "jld2". For the 
 
 Loading the file introduces a number of variables that will be listed in the REPL once the command has been executed. The variables that we will be looking at are `masses`, `accretions`, `centroids` and `posterior`. These are all matrices with dimensions *(number of candidate masses)×(number of candidate eddington fractions)*.
 
-Matrix `posterior` containts the posterior probability of each combination of mass and eddingtonfraction. There are 64 candidate masses, hence 64 rows, and 3 candidate eddington fractions, hence 3 columns. To inspect the posterior of e.g. 5th candidate mass and 2nd candidate eddington fraction, do: 
+Matrix `posterior` contains the posterior probability of each combination of mass and eddingtonfraction. There are 64 candidate masses (64 rows) and 3 candidate eddington fractions (3 columns) To inspect the posterior of e.g. 5th candidate mass and 2nd candidate eddington fraction, do: 
 ```
+# create matrix of eddington fractions because they are not saved in jld2 file.
+edfractions = kron([1;5;10]', ones(64)) 
+
 i,j = 5, 2 # specify combination
 posterior[i,j] # returned posterior probability
 masses[i,j] # returns the mass of combination
 accretions[i,j] # returns accretion rate of combination
 centroids[i,j] # returns centroids per wavelength in same order as lambda when loading dataset
+edfractions[i,j] # return eddington fraction of combination
 ```
 
 To find the most likely combination and look at its mass, accretion and centroids, do:
@@ -46,7 +50,16 @@ bestindex = argmax(posterior)
 masses[bestindex]
 accretions[bestindex]
 centroids[bestindex]
+edfractions[bestindex]
 ```
 
+To plot the marginal posterior for mass do:
+```
+plot(masses[:,1], sum(posterior, dims=2), "o-", label="first"); xscale("log")
+```
 
+To plot the mass posterior for the j-th eddington fraction do:
+```
+plot(masses[:,1], posterior[:,j], "o-"); xscale("log")
+```
 
