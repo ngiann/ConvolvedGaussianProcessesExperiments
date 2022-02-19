@@ -24,7 +24,7 @@ using JLD2, ADDatasets, PyPlot, MiscUtil, TransferFunctions
 lambda, = readdataset(source = "Mrk279_2017"); # load only wavelengths
 ```
 
-The folder contains a file named after the source and extension "jld2". For the case of Mrk279_2017 the file is called "Mrk279_2017.jld2". We load this file:
+The folder contains a file named after the object source and extension "jld2". For the case of Mrk279_2017 the file is called "Mrk279_2017.jld2". We load this file:
 ```
 @load "Mrk279_2017.jld2" # warnings may appear
 ```
