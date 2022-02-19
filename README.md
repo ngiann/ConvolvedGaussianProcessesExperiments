@@ -73,7 +73,7 @@ figure()
 plot([c[k] for c in centroids[:,j]], posterior[:,j], "o-"); xscale("log")
 ``` 
 
-To plot the fit for the most likely fit, we load:
+To plot the fit for the most likely combination, we load:
 ```
 @load "predictions.jld2"
 ```
