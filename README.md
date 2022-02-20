@@ -85,7 +85,7 @@ figure()
 plot(masses[:,1], posterior[:,j], "o-"); xscale("log")
 ```
 
-##### Delay posterior
+##### Delay posterior ⚠️ This needs re-thinking, don't trust for now
 
 To plot the delay posterior at k-th wavelength, for the j-th eddington fraction, we do:
 ```
