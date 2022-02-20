@@ -103,7 +103,7 @@ To plot the fit for the most likely combination, we load:
 
 This introduces variables `xtest`, `μ` and `σ` in the workspace. `xtest` holds the prediction times. `μ` and `σ` are each an array of arrays. The outer dimension goes over the wavelengths (as specified in `lambda`) and the inner array holds the prediction at the given times `xtest`.
 
-Let us plot the predictions over the data:
+Let us plot the predictions over the observed data:
 ```
 plotdataset(source = "Mrk279_2017");
 clrs = ["blue", "orange", "green", "red", "magenta", "brown"]
