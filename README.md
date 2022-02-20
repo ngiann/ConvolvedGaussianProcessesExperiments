@@ -20,8 +20,8 @@ Refreshed experiments
 ##### Brief overview
 
 All experiments on real data use the "matern32" kernel. For each object we try out a set of mass-eddington fraction combinations.
-For each combination, we perform a 5-fold cross-validation and use the result to calculate a fitness value (i.e. log-likelihood) that tells us how well the combination in question fits the data.
-Once we have collected the fitnesses of all combinations, we calculate the posterior probability of the combinations. The posterior tells us how likely each combination is relatively to all other combinations. 
+For each combination we perform a 5-fold cross-validation and use the result to calculate a fitness value (i.e. log-likelihood) that tells us how well the combination in question fits the data.
+Once we have collected the fitness of all combinations, we calculate the posterior probability of the combinations. The posterior probabilitz tells us how likely each combination is relatively to all other combinations. 
 
 ##### Mrk279_2017 example
 
@@ -40,11 +40,11 @@ The folder contains a file named after the object source and extension "jld2". F
 edfractions = kron([1;5;10]', ones(64)) 
 ```
 
-Loading the file introduces a number of variables in the workspace. We will look at the variables `masses`, `accretions`, `centroids`, `posterior` that we just loaded and `edfractions` that we just created. These are all matrices with dimensions *(number of candidate masses)×(number of candidate eddington fractions)*:
+Loading the file introduces a number of variables in the workspace. We will look at the variables `masses`, `accretions`, `centroids`, `posterior` that we just loaded and `edfractions` that we just created. These  matrices have dimensions *(number of candidate masses)×(number of candidate eddington fractions)*:
 ```
 map(size, [edfractions, masses, accretions, centroids, posterior])
 ```
-There are 64 candidate masses (64 rows) and 3 candidate eddington fractions (3 columns)
+There are 64 candidate masses, 64 rows, and 3 candidate eddington fractions, 3 columns (this is true for all experiments on real data).
 
 Each entry in matrix `posterior` contains the posterior probability of a particular combination of mass and eddingtonfraction.
 The elements in matrix `posterior` correspond to the elements in the matrices `masses`, `accretions`, `centroids`,  and `edfractions`.
