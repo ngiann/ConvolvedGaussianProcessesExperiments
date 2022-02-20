@@ -21,7 +21,7 @@ Refreshed experiments
 
 All experiments on real data use the "matern32" kernel. For each object we try out a set of mass-eddington fraction combinations.
 For each combination we perform a 5-fold cross-validation and use the result to calculate a fitness value (i.e. log-likelihood) that tells us how well the combination in question fits the data.
-Once we have collected the fitness of all combinations, we calculate the posterior probability of the combinations. The posterior probabilitz tells us how likely each combination is relatively to all other combinations. 
+Once we have collected the fitness of all combinations, we calculate the posterior probability of the combinations. The posterior probability tells us how likely each combination is relatively to all other combinations. 
 
 ##### Mrk279_2017 example
 
