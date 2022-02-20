@@ -45,7 +45,7 @@ Loading the file introduces a number of variables in the workspace. We will look
 ```
 map(size, [edfractions, masses, accretions, centroids, posterior])
 ```
-As aforementioned, we see that there are 64 candidate masses (64 rows) and 3 candidate eddington fractions (3 columns).
+We see that all matrices have 64 rows (that correspond to the 64 candidate masses) and and 3 rows (that correspond to the 3 candidate eddington fractions).
 
 Each entry in matrix `posterior` contains the posterior probability of a particular combination of mass and eddingtonfraction.
 The elements in matrix `posterior` correspond to the elements in the matrices `masses`, `accretions`, `centroids`,  and `edfractions`.
@@ -85,9 +85,9 @@ figure()
 plot(masses[:,1], posterior[:,j], "o-"); xscale("log")
 ```
 
-##### Delay posterior ⚠️ This needs re-thinking, don't trust for now
+##### Centroid posterior ⚠️ This needs re-thinking, don't trust for now
 
-To plot the delay posterior at k-th wavelength, for the j-th eddington fraction, we do:
+To plot the centroid posterior at k-th wavelength, for the j-th eddington fraction, we do:
 ```
 k=1
 figure()
