@@ -49,7 +49,7 @@ We see that all matrices have 64 rows (that correspond to the 64 candidate masse
 
 Each entry in matrix `posterior` contains the posterior probability of a particular combination of mass and eddingtonfraction.
 The elements in matrix `posterior` correspond to the elements in the matrices `masses`, `accretions`, `centroids`,  and `edfractions`.
-This means that if we want to find out e.g. 5th candidate mass and 2nd candidate eddington fraction, do: 
+This means that if we want to find out about e.g. the 5th candidate mass and 2nd candidate eddington fraction, do: 
 ```
 i,j = 5, 2 # specify combination
 
