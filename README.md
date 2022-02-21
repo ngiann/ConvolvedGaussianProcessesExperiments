@@ -62,7 +62,7 @@ edfractions[i,j] # return eddington fraction of combination
 
 ##### Most likely combination
 
-To find the most likely combination (i.e. highest posterior probability) and look at its mass, accretion and centroids, we do:
+To find the most likely combination (i.e. highest posterior probability) and look at its mass, accretion, centroids and eddington fraction, we do:
 ```
 bestindex = argmax(posterior)
 masses[bestindex]
