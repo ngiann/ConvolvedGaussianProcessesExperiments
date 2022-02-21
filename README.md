@@ -45,7 +45,7 @@ Loading the file introduces a number of variables in the workspace. We will look
 ```
 map(size, [edfractions, masses, accretions, centroids, posterior])
 ```
-We see that all matrices have 64 rows (that correspond to the 64 candidate masses) and and 3 rows (that correspond to the 3 candidate eddington fractions).
+We see that all matrices have 64 rows (that correspond to the 64 candidate masses) and 3 rows (that correspond to the 3 candidate eddington fractions).
 
 Each entry in matrix `posterior` contains the posterior probability of a particular combination of mass and eddingtonfraction.
 The elements in matrix `posterior` correspond to the elements in the matrices `masses`, `accretions`, `centroids`,  and `edfractions`.
