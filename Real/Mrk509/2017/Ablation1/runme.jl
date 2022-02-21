@@ -16,8 +16,8 @@ lambda, tobs, yobs, σobs = readdataset(source = SOURCE)
 kernelname = "matern32"
 
 # specify physical parameters
-masses     = collect(logrange(1e5, 1e10, 64))
-efractions = collect(1.0:2.0:35.0)
+masses     = collect(logrange(1e5, 6e10, 64))
+efractions = [1;5;10.0]
 
 # create combinations of transfer functions
 TF = [PhysicalTransferFunctionsEddington(mass=m, eddingtonfraction=ef, wavelengths=lambda) for m in masses, ef in efractions]
