@@ -45,11 +45,11 @@ Loading the file introduces a number of variables in the workspace. We will look
 ```
 map(size, [edfractions, masses, accretions, centroids, posterior])
 ```
-As aforementioned, we see that there are 64 candidate masses (64 rows) and 3 candidate eddington fractions (3 columns).
+We see that all matrices have 64 rows (that correspond to the 64 candidate masses) and 3 rows (that correspond to the 3 candidate eddington fractions).
 
 Each entry in matrix `posterior` contains the posterior probability of a particular combination of mass and eddingtonfraction.
 The elements in matrix `posterior` correspond to the elements in the matrices `masses`, `accretions`, `centroids`,  and `edfractions`.
-This means that if we want to find out e.g. 5th candidate mass and 2nd candidate eddington fraction, do: 
+This means that if we want to find out about e.g. the 5th candidate mass and 2nd candidate eddington fraction, do: 
 ```
 i,j = 5, 2 # specify combination
 
@@ -62,7 +62,7 @@ edfractions[i,j] # return eddington fraction of combination
 
 ##### Most likely combination
 
-To find the most likely combination (i.e. highest posterior probability) and look at its mass, accretion and centroids, we do:
+To find the most likely combination (i.e. highest posterior probability) and look at its mass, accretion, centroids and eddington fraction, we do:
 ```
 bestindex = argmax(posterior)
 masses[bestindex]
@@ -85,9 +85,9 @@ figure()
 plot(masses[:,1], posterior[:,j], "o-"); xscale("log")
 ```
 
-##### Delay posterior
+##### Centroid posterior ⚠️ This needs re-thinking, don't trust for now
 
-To plot the delay posterior at k-th wavelength, for the j-th eddington fraction, we do:
+To plot the centroid posterior at k-th wavelength, for the j-th eddington fraction, we do:
 ```
 k=1
 figure()
@@ -103,7 +103,7 @@ To plot the fit for the most likely combination, we load:
 
 This introduces variables `xtest`, `μ` and `σ` in the workspace. `xtest` holds the prediction times. `μ` and `σ` are each an array of arrays. The outer dimension goes over the wavelengths (as specified in `lambda`) and the inner array holds the prediction at the given times `xtest`.
 
-Let us plot the predictions over the data:
+Let us plot the predictions over the observed data:
 ```
 plotdataset(source = "Mrk279_2017");
 clrs = ["blue", "orange", "green", "red", "magenta", "brown"]
