@@ -20,6 +20,6 @@ masses     = collect(logrange(1e5, 6e10, 64))
 efractions = [1;5;10.0]
 
 # create combinations of transfer functions
-TF = [PhysicalTransferFunctionsEddington(mass=m, eddingtonfraction=ef, wavelengths=lambda) for m in masses, ef in efractions]
+TF = @showprogress [PhysicalTransferFunctionsEddington(mass=m, eddingtonfraction=ef, wavelengths=lambda) for m in masses, ef in efractions]
 
 include("../../../../runmecommonpart.jl")
