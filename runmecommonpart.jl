@@ -60,7 +60,7 @@ let
 
     display(bestTF)
 
-    _, pred = convolvedgp(tarray=tobs, yarray=yobs, stdarray=σobs, kernelname=kernelname, tfarray=bestTF, iterations=3000, numberofrestarts = 1, ρmax=20.0)
+    _, pred = convolvedgp(tarray=tobs, yarray=yobs, stdarray=σobs, kernelname=kernelname, tfarray=bestTF, iterations=3000, numberofrestarts = 1, ρmax=20.0, T = 1000)
 
     xtest = LinRange(minimum(map(minimum, tobs)), maximum(map(maximum, tobs)), 2500)
 
