@@ -2,7 +2,7 @@
 using Printf, MiscUtil, ADDatasets, TransferFunctions, JLD2
 using ConvolvedKernel, Random, Distributions, LinearAlgebra, PyPlot
 
-function runexperiment(experimentname; tobs = tobs, yobs = yobs, σobs = σobs, kernelname = kernelname, transferFunctions = transferFunctions, iterations = 3500, ρmax = 20.0, fs = 250)
+function runexperiment(experimentname; tobs = tobs, yobs = yobs, σobs = σobs, kernelname = kernelname, transferFunctions = transferFunctions, iterations = 3500, ρmax = 20.0, fs = 200, T = 1000)
 
 
     colourprint(@sprintf("Started experiment |%s|\n", experimentname), bold = true)
@@ -18,7 +18,7 @@ function runexperiment(experimentname; tobs = tobs, yobs = yobs, σobs = σobs, 
     colourprint(@sprintf("fs set to |%d|\n", fs), foreground =:light_cyan)
 
 
-    out = @showprogress pmap(tfarray->(@suppress performcv(tarray=tobs, yarray=yobs, stdarray=σobs, kernelname=kernelname, tfarray=tfarray, iterations=iterations, numberofrestarts=1, ρmax=ρmax, fs = fs)), transferFunctions)
+    out = @showprogress pmap(tfarray->(@suppress performcv(tarray=tobs, yarray=yobs, stdarray=σobs, kernelname=kernelname, tfarray=tfarray, iterations=iterations, numberofrestarts=1, ρmax=ρmax, fs = fs, T = T)), transferFunctions)
 
 
     masses     = [mass(tf[1])      for tf in transferFunctions]
