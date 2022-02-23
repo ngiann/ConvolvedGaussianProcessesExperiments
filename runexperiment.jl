@@ -17,6 +17,8 @@ function runexperiment(experimentname; tobs = tobs, yobs = yobs, σobs = σobs, 
 
     colourprint(@sprintf("fs set to |%d|\n", fs), foreground =:light_cyan)
 
+    colourprint(@sprintf("T  set to |%f|\n",  T), foreground =:light_cyan)
+
 
     out = @showprogress pmap(tfarray->(@suppress performcv(tarray=tobs, yarray=yobs, stdarray=σobs, kernelname=kernelname, tfarray=tfarray, iterations=iterations, numberofrestarts=1, ρmax=ρmax, fs = fs, T = T)), transferFunctions)
 
