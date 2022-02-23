@@ -28,7 +28,8 @@ kernelname = "matern32"
 masses     = collect(logrange(1e6, 1e10, 32))
 efractions = [10.0; 20.0; 30.0]
 
+
 # create combinations of transfer functions
-TF = [PhysicalTransferFunctionsEddington(mass=m, eddingtonfraction=ef, wavelengths=lambda) for m in masses, ef in efractions]
+TF = pmap(((m,ef),) -> PhysicalTransferFunctionsEddington(mass = m, eddingtonfraction = ef, wavelengths = lambda), Iterators.product(masses, efractions))
 
 include("../../runmecommonpart.jl")
