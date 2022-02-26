@@ -2,7 +2,7 @@
 using Printf, MiscUtil, ADDatasets, TransferFunctions, JLD2
 using ConvolvedKernel, Random, Distributions, LinearAlgebra, PyPlot
 
-function runexperiment(experimentname; tobs = tobs, yobs = yobs, σobs = σobs, kernelname = kernelname, transferFunctions = transferFunctions, iterations = 3500, ρmax = 20.0, fs = 200, T = 800)
+function runexperiment(experimentname; tobs = tobs, yobs = yobs, σobs = σobs, kernelname = kernelname, transferFunctions = transferFunctions, iterations = 3500, ρmax = 20.0, fs = FS, T = 800)
 
 
     colourprint(@sprintf("Started experiment |%s|\n", experimentname), bold = true)
