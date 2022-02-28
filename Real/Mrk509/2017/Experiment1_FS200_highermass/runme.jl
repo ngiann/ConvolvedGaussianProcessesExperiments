@@ -16,7 +16,7 @@ lambda, tobs, yobs, σobs = readdataset(source = SOURCE)
 kernelname = "matern32"
 
 # specify physical parameters
-masses     = collect(logrange(1e5, 5e10, 56))
+masses     = collect(logrange(1e5, 3e10, 48))
 efractions = [10.0]
 
 # create combinations of transfer functions
