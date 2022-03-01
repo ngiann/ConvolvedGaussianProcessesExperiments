@@ -20,7 +20,7 @@ function runexperiment(experimentname; tobs = tobs, yobs = yobs, σobs = σobs, 
     colourprint(@sprintf("T  set to |%f|\n",  T), foreground =:light_cyan)
 
 
-    out = @showprogress pmap(tfarray->(@suppress performcv(tarray=tobs, yarray=yobs, stdarray=σobs, kernelname=kernelname, tfarray=tfarray, iterations=iterations, numberofrestarts=1, ρmax=ρmax, fs = fs, T = T)), transferFunctions)
+    out = @showprogress pmap(tfarray->(@suppress performcv(tarray=tobs, yarray=yobs, stdarray=σobs, kernelname=kernelname, tfarray=tfarray, iterations=iterations, numberofrestarts=1, ρmin=ρmin, ρmax=ρmax, fs = fs, T = T)), transferFunctions)
 
 
     masses     = [mass(tf[1])      for tf in transferFunctions]
