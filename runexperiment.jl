@@ -13,7 +13,7 @@ function runexperiment(experimentname; tobs = tobs, yobs = yobs, σobs = σobs, 
 
     colourprint(@sprintf("running for a maximum |%d| number of iterations\n",iterations), foreground =:light_cyan)
 
-    colourprint(@sprintf("maximum length scale ρmax set to |%f|\n", ρmax), foreground =:light_cyan)
+    colourprint(@sprintf("minimum, maximum length scale ρmin, ρmax set to |%f|, |%f|\n", ρmin, ρmax), foreground =:light_cyan)
 
     colourprint(@sprintf("fs set to |%d|\n", fs), foreground =:light_cyan)
 
