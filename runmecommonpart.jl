@@ -6,7 +6,7 @@
 
 for _ in 1:2
 
-    runexperiment("warmup_deleteme"; transferFunctions = TF[1:min(nworkers(), length(TF))], tobs = tobs, yobs = yobs, σobs = σobs, kernelname = kernelname, fs = 100, ρmax=1.0, iterations=2)
+    runexperiment("warmup_deleteme"; transferFunctions = TF[1:min(nworkers(), length(TF))], tobs = tobs, yobs = yobs, σobs = σobs, kernelname = kernelname, fs = 30, ρmax=1.0, iterations=2)
 
     run(`rm warmup_deleteme.jld2`)
 
@@ -17,7 +17,7 @@ end
 
 EXPERIMENT = SOURCE
 
-savedfile = runexperiment(EXPERIMENT; transferFunctions = TF, tobs = tobs, yobs = yobs, σobs = σobs, kernelname = kernelname, fs = 100, ρmax = 20.0)
+savedfile = runexperiment(EXPERIMENT; transferFunctions = TF, tobs = tobs, yobs = yobs, σobs = σobs, kernelname = kernelname, fs = FS, ρmax = 20.0, ρmin = ρmin)
 
 
 #-------------------------------------------------------------------------------
@@ -60,7 +60,7 @@ let
 
     display(bestTF)
 
-    _, pred = convolvedgp(tarray=tobs, yarray=yobs, stdarray=σobs, kernelname=kernelname, tfarray=bestTF, iterations=3000, numberofrestarts = 1, ρmax=20.0)
+    _, pred = convolvedgp(tarray=tobs, yarray=yobs, stdarray=σobs, kernelname=kernelname, tfarray=bestTF, iterations=3000, numberofrestarts = 1, ρmax=20.0, T = 800, fs = FS)
 
     xtest = LinRange(minimum(map(minimum, tobs)), maximum(map(maximum, tobs)), 2500)
 

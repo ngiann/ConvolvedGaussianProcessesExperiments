@@ -20,6 +20,6 @@ masses     = collect(logrange(1e5, 1e10, 64))
 efractions = [1.0; 5.0; 10.0]
 
 # create combinations of transfer functions
-TF = [PhysicalTransferFunctionsEddington(mass=m, eddingtonfraction=ef, wavelengths=lambda) for m in masses, ef in efractions]
+TF = pmap(((m,ef),) -> PhysicalTransferFunctionsEddington(mass = m, eddingtonfraction = ef, wavelengths = lambda), Iterators.product(masses, efractions))
 
 include("../../../runmecommonpart.jl")

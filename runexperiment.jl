@@ -1,8 +1,8 @@
-@everywhere using ConvolvedGaussianProcesses, ProgressMeter, Suppressor
-using Printf, MiscUtil, ADDatasets, TransferFunctions, JLD2
+@everywhere using ConvolvedGaussianProcesses, ProgressMeter, Suppressor, TransferFunctions, MiscUtil
+using Printf, ADDatasets, JLD2
 using ConvolvedKernel, Random, Distributions, LinearAlgebra, PyPlot
 
-function runexperiment(experimentname; tobs = tobs, yobs = yobs, σobs = σobs, kernelname = kernelname, transferFunctions = transferFunctions, iterations = 3500, ρmax = 20.0, fs = 250)
+function runexperiment(experimentname; tobs = tobs, yobs = yobs, σobs = σobs, kernelname = kernelname, transferFunctions = transferFunctions, iterations = 3500, ρmin = 0.01, ρmax = 20.0, fs = FS, T = 800)
 
 
     colourprint(@sprintf("Started experiment |%s|\n", experimentname), bold = true)
@@ -13,12 +13,14 @@ function runexperiment(experimentname; tobs = tobs, yobs = yobs, σobs = σobs, 
 
     colourprint(@sprintf("running for a maximum |%d| number of iterations\n",iterations), foreground =:light_cyan)
 
-    colourprint(@sprintf("maximum length scale ρmax set to |%f|\n", ρmax), foreground =:light_cyan)
+    colourprint(@sprintf("minimum, maximum length scale ρmin, ρmax set to |%f|, |%f|\n", ρmin, ρmax), foreground =:light_cyan)
 
     colourprint(@sprintf("fs set to |%d|\n", fs), foreground =:light_cyan)
 
+    colourprint(@sprintf("T  set to |%f|\n",  T), foreground =:light_cyan)
 
-    out = @showprogress pmap(tfarray->(@suppress performcv(tarray=tobs, yarray=yobs, stdarray=σobs, kernelname=kernelname, tfarray=tfarray, iterations=iterations, numberofrestarts=1, ρmax=ρmax, fs = fs)), transferFunctions)
+
+    out = @showprogress pmap(tfarray->(@suppress performcv(tarray=tobs, yarray=yobs, stdarray=σobs, kernelname=kernelname, tfarray=tfarray, iterations=iterations, numberofrestarts=1, ρmin=ρmin, ρmax=ρmax, fs = fs, T = T)), transferFunctions)
 
 
     masses     = [mass(tf[1])      for tf in transferFunctions]
@@ -38,6 +40,7 @@ function runexperiment(experimentname; tobs = tobs, yobs = yobs, σobs = σobs, 
                         "tobs", tobs,
                         "yobs", yobs,
                         "σobs", σobs,
+                        "ρmin", ρmin,
                         "ρmax", ρmax,
                         "fs", fs,
                         "iterations", iterations,
