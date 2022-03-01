@@ -9,6 +9,7 @@ Refreshed experiments
   - [Mrk509_2017](Mrk509_2017.md)
   - [Ngc2617](Ngc2617.md)
   - [Ark120](Ark120.md)
+  - [Mgc0811](Mgc0811.md)
 - Synthetic
   - [Synthetic 1](Synthetic1.md)
   - Synthetic 2 - incongruous lightcurve
