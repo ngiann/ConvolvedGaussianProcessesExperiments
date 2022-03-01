@@ -17,7 +17,7 @@ end
 
 EXPERIMENT = SOURCE
 
-savedfile = runexperiment(EXPERIMENT; transferFunctions = TF, tobs = tobs, yobs = yobs, σobs = σobs, kernelname = kernelname, fs = FS, ρmax = 20.0)
+savedfile = runexperiment(EXPERIMENT; transferFunctions = TF, tobs = tobs, yobs = yobs, σobs = σobs, kernelname = kernelname, fs = FS, ρmax = 20.0, ρmin = ρmin)
 
 
 #-------------------------------------------------------------------------------
