@@ -1,5 +1,5 @@
-@everywhere using ConvolvedGaussianProcesses, ProgressMeter, Suppressor
-using Printf, MiscUtil, ADDatasets, TransferFunctions, JLD2
+@everywhere using ConvolvedGaussianProcesses, ProgressMeter, Suppressor, TransferFunctions, MiscUtil
+using Printf, ADDatasets, JLD2
 using ConvolvedKernel, Random, Distributions, LinearAlgebra, PyPlot
 
 function runexperiment(experimentname; tobs = tobs, yobs = yobs, σobs = σobs, kernelname = kernelname, transferFunctions = transferFunctions, iterations = 3500, ρmin = 0.01, ρmax = 20.0, fs = FS, T = 800)
