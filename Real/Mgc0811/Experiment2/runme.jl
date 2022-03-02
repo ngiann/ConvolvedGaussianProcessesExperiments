@@ -30,4 +30,6 @@ TF = pmap(((m,ef),) -> PhysicalTransferFunctionsEddington(mass = m, eddingtonfra
 
 FS = 200
 
+ρmin = 2.0
+
 include("../../../runmecommonpart.jl")
