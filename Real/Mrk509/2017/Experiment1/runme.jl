@@ -22,4 +22,8 @@ efractions = [1.0; 5.0; 10.0]
 # create combinations of transfer functions
 TF = pmap(((m,ef),) -> PhysicalTransferFunctionsEddington(mass = m, eddingtonfraction = ef, wavelengths = lambda), Iterators.product(masses, efractions))
 
+FS = 200
+
+ρmin = 0.1
+
 include("../../../../runmecommonpart.jl")
