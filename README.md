@@ -12,8 +12,6 @@ Refreshed experiments
   - [Mgc0811](Mgc0811.md)
 - Synthetic
   - [Synthetic 1](Synthetic1.md)
-  - Synthetic 2 - incongruous lightcurve
-  - Synthetic 3 - incongruous lightcurve
 
 ## How to read the results for real data
 
