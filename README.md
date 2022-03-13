@@ -12,6 +12,7 @@ Refreshed experiments
   - [Mgc0811](Mgc0811.md)
 - Synthetic
   - [Synthetic 1](Synthetic1.md)
+  - [Synthetic 1 with box functions](Synthetic1Box.md)
 
 ## How to read the results for real data
 
