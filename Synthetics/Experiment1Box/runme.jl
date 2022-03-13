@@ -12,7 +12,7 @@ truemass      = 1e8
 trueedfrac    = 20
 trueaccretion = TransferFunctions.massaccretionfunction(bhm = truemass, edfrac=trueedfrac, eta=0.1)
 
-lambda, tobs, yobs, σobs, = simulatedatafromgp(mass=truemass, accretion=trueaccretion, Tmax = 100, N=60)
+lambda, tobs, yobs, σobs, = simulatedatafromgp(mass=truemass, eddingtonfraction=trueedfrac, Tmax = 100, N=60)
 
 # use only the first three wavelengths
 lambda, tobs, yobs, σobs = lambda[1:3], tobs[1:3], yobs[1:3], σobs[1:3]
